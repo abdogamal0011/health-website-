@@ -1,0 +1,105 @@
+
+<div class="container mt-4 d-flex register-container justify-content-center">
+    <div class="card col-6">
+      <div class="card-header ">
+        <h3 class="reg">Register</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="registerForm">
+          <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstName"
+              formControlName="firstName"
+              placeholder="Enter First Name"
+            />
+  
+        
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastName"
+              formControlName="lastName"
+              placeholder="Enter Last Name"
+            />
+  
+        
+          </div>
+  
+          <div class="form-group">
+            <label for="email">Email address:</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              formControlName="email"
+              placeholder="Enter Your Email"
+            />
+  
+            @if( registerForm.controls['email'].invalid &&
+            registerForm.controls['email'].touched){ @if
+            (registerForm.controls['email'].errors?.['pattern']){
+            <div id="emailHelp" class="form-text text-danger">
+              Please Enter Valid Email
+            </div>
+  
+            } }
+          </div>
+  
+          <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" formControlName="gender" class="form-control">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              formControlName="password"
+              placeholder="Enter Your Password"
+            />
+            @if(registerForm.controls['password'].invalid &&
+            registerForm.controls['password'].touched){ @if
+            (registerForm.controls['password'].errors?.['pattern']){
+            <span id="Password" class="form-text text-danger">
+              Your Password Must be Not Less Than 8 Characters and Must Contain
+              Number & Special Character
+            </span>
+  
+            } }
+          </div>
+          <div class="form-group">
+            <label for="age">Age:</label>
+    <input type="number" id="age" formControlName="age"             class="form-control"
+    >
+          </div>
+          <div class="form-group">
+            <label for="userType">User Type:</label>
+            <select id="userType" formControlName="userType" class="form-control">
+              <option value="doctor">Doctor</option>
+              <option value="patient">Patient</option>
+            </select>
+          </div>
+  
+          <button
+            type="submit"
+            class="btn "
+            [disabled]="registerForm.invalid"
+          >
+            Register
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
