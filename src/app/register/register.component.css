@@ -1,13 +1,25 @@
 .card-header{
     background-color: #35d69b;
-    opacity: 0.5;
+    opacity: 0.7;
 }
 .reg {
     color :white
 }
 .btn{  
       background-color: #35d69b;
-      opacity: 0.5;
+      opacity: 0.7;
+      
 
 
+}
+.reg{
+    text-align: center;
+}
+.btnn{
+    
+    text-align: center;
+padding-top: 5px;
+}
+.btn{
+    color: white;
 }
