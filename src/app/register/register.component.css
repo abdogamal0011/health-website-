@@ -1,11 +1,13 @@
 .card-header{
     background-color: #35d69b;
+    opacity: 0.5;
 }
 .reg {
     color :white
 }
 .btn{  
       background-color: #35d69b;
+      opacity: 0.5;
 
 
 }
