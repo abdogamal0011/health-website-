@@ -1,8 +1,7 @@
-
-<div class="container register-container">
+<div class="container register-container w-50 p-4 ">
     <div class="card">
       <div class="card-header ">
-        <h3 class="reg">Register</h3>
+        <h3 class="reg ">Register</h3>
       </div>
       <div class="card-body">
         <form [formGroup]="registerForm">
@@ -13,7 +12,6 @@
               class="form-control"
               id="firstName"
               formControlName="firstName"
-              placeholder="Enter First Name"
             />
   
         
@@ -25,7 +23,6 @@
               class="form-control"
               id="lastName"
               formControlName="lastName"
-              placeholder="Enter Last Name"
             />
   
         
@@ -38,7 +35,6 @@
               class="form-control"
               id="email"
               formControlName="email"
-              placeholder="Enter Your Email"
             />
   
             @if( registerForm.controls['email'].invalid &&
@@ -66,7 +62,6 @@
               class="form-control"
               id="password"
               formControlName="password"
-              placeholder="Enter Your Password"
             />
             @if(registerForm.controls['password'].invalid &&
             registerForm.controls['password'].touched){ @if
@@ -90,14 +85,16 @@
               <option value="patient">Patient</option>
             </select>
           </div>
-  
-          <button
-            type="submit"
-            class="btn "
-            [disabled]="registerForm.invalid"
-          >
-            Register
-          </button>
+  <div class="btnn">
+    <button
+    type="submit"
+    class="btn w-50 "
+    [disabled]="registerForm.invalid"
+  >
+    Register
+  </button>
+  </div>
+         
         </form>
       </div>
     </div>
