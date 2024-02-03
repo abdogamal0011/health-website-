@@ -5,8 +5,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterLink, Router } from '@angular/router';
-
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register',
