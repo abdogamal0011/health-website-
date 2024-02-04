@@ -5,11 +5,12 @@ import { SearchDoctorPipe } from '../../pipe/search-doctor.pipe';
 import { SearchHomePipe } from '../../pipe/search-home.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-list-of-doctors',
   standalone: true,
-  imports: [ SearchDoctorPipe , NgxPaginationModule , SearchHomePipe , FormsModule],
+  imports: [ SearchDoctorPipe , NgxPaginationModule , SearchHomePipe , FormsModule , RouterLink],
   templateUrl: './list-of-doctors.component.html',
   styleUrl: './list-of-doctors.component.css'
 })

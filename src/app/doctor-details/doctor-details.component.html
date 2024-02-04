@@ -1,0 +1,196 @@
+<section>
+  <div class="container1 d-flex flex-column flex-md-row p-5">
+    <div class="img">
+      <img [src]="doctor.imageCover" class="w-100" alt="" />
+    </div>
+    <div class="details ps-md-5 d-flex align-items-start">
+      <div class="line h-100 border border-1"></div>
+
+      <div class="text px-md-5 pt-3">
+        <div class="title d-flex align-items-center justify-content-between">
+          <h2>Dr : {{ doctor.title }}</h2>
+          <span class="available bg-green">available</span>
+        </div>
+
+        <p class="description pt-lg-2">
+          <span class="fw-bold">speciality </span>:
+          <span>{{ doctor.brand.name }}</span>
+        </p>
+        <p class="description pt-lg-2">
+          <span class="fw-bold">Experience </span>:
+          <span>{{ doctor.description }}</span>
+        </p>
+        <p class="description pt-lg-2">
+          <span class="fw-bold">Address </span>:
+          <span>المنيل : شارع المنيل الرئيسي - ميدان الباشا </span>
+        </p>
+        <p class="description pt-lg-2">
+          <span class="fw-bold">Feas </span>:
+          <span> {{ doctor.price }} <span class="fw-bold">Eg</span></span>
+        </p>
+
+        <div class="vote d-flex align-items-center justify-content-between">
+          <a [href]="doctor.homepage" target="_blank" class="homepage"
+            >Location</a
+          >
+          @if (doctor.ratingsAverage >10) {
+          <span>
+            <i class="fa-solid fa-star text-warning"></i>
+            <i class="fa-solid fa-star text-warning"></i>
+            <i class="fa-solid fa-star text-warning"></i>
+            <i class="fa-solid fa-star text-warning"></i>
+            <i class="fa-solid fa-star text-warning"></i>
+          </span>
+          } @if(doctor.ratingsAverage > 0 && doctor.ratingsAverage <= 7) {
+          <span>
+            <i class="fa-solid fa-star text-warning"></i>
+            <i class="fa-solid fa-star text-warning"></i>
+          </span>
+          } @if (doctor.ratingsAverage >= 8 && doctor.ratingsAverage <= 10) {
+          <span>
+            <i class="fa-solid fa-star text-warning"></i>
+            <i class="fa-solid fa-star text-warning"></i>
+            <i class="fa-solid fa-star text-warning"></i>
+            <i class="fa-solid fa-star text-warning"></i>
+          </span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-5 BookContainer bg-light mb-2">
+
+    <div class="bg-green">
+      <h1 class="text-light px-3 text-center">Book Now</h1>
+    </div>
+    <div class="d-flex justify-content-evenly">
+
+      <div>
+        <i class="fa-solid fa-coins"></i>
+        <span class="px-2">{{doctor.price}} Eg</span>
+      </div>
+      <div>
+        <i class="fa-solid fa-location-dot"></i>
+        <span class="px-2">BaniSuef-elryade</span>
+      </div>
+      <div>
+        <i class="fa-solid fa-hourglass-start"></i>
+        <span class="px-2">Waiting for : 8 min</span>
+      </div>
+    </div>
+    <hr>
+    <div class="imgClinic-container">
+      <img src="https://cdn-dr-images.vezeeta.com/Assets/Images/Entities/entd7e0d5aceda20d36/Facilities/misr-modern-clinics_20240101061913491.jpg" alt="" class="imgClinic">
+      عيادات مصر الحديثه
+    </div>
+    <button
+    type="button"
+    class="btn bg-green mt-2 w-100"
+    data-bs-toggle="modal"
+    data-bs-target="#staticBackdrop"
+  >
+    احجز الان
+  </button>
+
+  <!-- Modal -->
+  <div
+    class="modal fade "
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">
+            ادخل بيانات الحجز
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex flex-column">
+            <div class="inputDiv">
+              <i class="fa-solid fa-user"></i>
+              <input type="text" placeholder="Patient name" />
+            </div>
+            <div class="inputDiv">
+              <i class="fa-solid fa-phone"></i>
+              <input type="number" placeholder="phone number" />
+            </div>
+            <div class="inputDiv">
+              <i class="fa-solid fa-envelope"></i>
+              <input type="email" placeholder="Email" />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="button" class="btn btn-primary text-center">
+           book
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+
+  <div class="mx-5 BookContainer bg-light mb-2">
+
+    <div class="bg-green">
+      <h1 class="text-light px-3 text-center">Comments</h1>
+    </div>
+
+    <!-- Comment Form -->
+    <div class="p-3">
+      <form>
+        <div class="mb-3">
+          <label for="commentInput" class="form-label">Your Comment</label>
+          <textarea class="form-control" id="commentInput" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-green">Submit Comment</button>
+      </form>
+    </div>
+
+    <!-- Comment List -->
+    <div class="p-3">
+      <div class="mb-3">
+        <!-- Single Comment -->
+        <div class="bg-light p-2 mb-2">
+          <p>"اكثر من رائع ...."</p>
+          <small class="text-muted">Posted by: Islam Yasser</small>
+          <br>
+          <small class="text-muted"> 22 jan 2021 </small>
+        </div>
+
+        <!-- Another Comment -->
+        <div class="bg-light p-2 mb-2">
+          <p>جزاك الله خيرا .</p>
+          <small class="text-muted">Posted by: gamal ahmed</small>
+          <br>
+          <small class="text-muted">22 jan 2021</small>
+        </div>
+
+        <!-- Add more comments as needed -->
+      </div>
+    </div>
+
+  </div>
+
+</section>
