@@ -1,0 +1,82 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+
+<div class="container d-flex justify-content-center mt-10">
+  <div class="row col-5">
+
+    <form #formaForm="ngForm" (ngSubmit)="handleSubmitForm(formaForm)">
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+
+        </div>
+
+
+        <input name="email"
+         [(ngModel)]="forma.email"
+          pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+           required
+          email="" #email="ngModel"
+          class="form-control"
+           placeholder="Email Adress"
+           type="email">
+
+
+
+
+      </div> <!-- form-group// -->
+
+      <!-- error -->
+      @if(email.invalid && email.touched) {
+        @if(email.errors?.['required']) {
+      <span class="form-text text-danger fw-bold text-center"> This field is required </span>
+      }@if(email.errors?.['pattern']){
+
+
+      <span class="form-text text-danger fw-bold text-center"> invalid Email </span>
+
+
+      } }
+      <!-- error -->
+
+
+
+      <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+        </div>
+        <input class="form-control "
+         name="passwords" [(ngModel)]="forma.password"
+         required #passwords="ngModel"
+          minlength="5" placeholder=" password" type="password">
+
+
+
+
+      </div> <!-- form-group// -->
+
+
+      <!-- error -->
+      @if(passwords.invalid && passwords.touched) { @if(passwords.errors?.['required']) {
+      <span class="form-text text-danger fw-bold text-center"> This field is required </span>
+      } @if(passwords.errors?.['minlength']) {
+      <span class="form-text text-danger fw-bold text-center">Min length is 8 </span>
+      } }
+
+      <!-- error -->
+
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-success btn-block" [disabled]="formaForm.invalid"> Login
+        </button>
+      </div> <!-- form-group// -->
+      <p class="text-center">Create Account <a routerLink="/register" class="text-success">Register</a> </p>
+    </form>
+
+
+
+  </div>
+</div>

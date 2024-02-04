@@ -1,0 +1,107 @@
+<div class="container register-container w-50 p-4 ">
+    <div class="card shadow border">
+      <div class="card-header ">
+        <h3 class="reg ">Register</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="registerForm" class="p-3">
+          <div class="form-group">
+
+            <input
+            placeholder="Enter the user Name "
+              type="text"
+              class="form-control my-3 "
+              id="userName"
+              formControlName="userName"
+            />
+
+
+          </div>
+
+
+          <div class="form-group">
+
+            <input
+            placeholder="Enter the Email "
+              type="email"
+              class="form-control my-3"
+              id="email"
+              formControlName="email"
+            />
+
+            @if( registerForm.controls['email'].invalid &&
+            registerForm.controls['email'].touched){ @if
+            (registerForm.controls['email'].errors?.['pattern']){
+            <div id="emailHelp" class="form-text text-danger">
+              Please Enter Valid Email
+            </div>
+
+            } }
+          </div>
+
+          <div class="form-group  d-flex justify-content-around align-items-center">
+            <div class="male">
+
+              <label class="p-2" for="Male">Male :</label>
+              <input  type="radio" id="Male" name="fav_language" value="Male">
+            </div>
+
+              <div class="female">
+                <label class="p-2" for="Female">Female :</label>
+                <input  type="radio" id="Female" name="fav_language" value="Female">
+              </div>
+
+
+          </div>
+
+          <div class="form-group">
+
+            <input
+            placeholder="Enter the Password "
+              type="password"
+              class="form-control my-3"
+              id="password"
+              formControlName="password"
+            />
+            @if(registerForm.controls['password'].invalid &&
+            registerForm.controls['password'].touched){ @if
+            (registerForm.controls['password'].errors?.['pattern']){
+            <span id="Password" class="form-text text-danger">
+              Your Password Must be Not Less Than 8 Characters and Must Contain
+              Number & Special Character
+            </span>
+
+            } }
+          </div>
+          <div class="form-group">
+
+    <input type="number" id="age" formControlName="age"
+         class="form-control my-3"
+         placeholder="Enter the Age"
+    >
+          </div>
+          <div class="form-group  d-flex justify-content-around align-items-center">
+            <div class="doctor">
+              <label class="p-2" for="Doctor" >Doctor :</label>
+              <input class="p-0" type="radio" id="Doctor" name="fav_language" value="Doctor">
+            </div>
+            <div class="patian">
+
+              <label class="p-2" for="patian">patian : </label>
+              <input type="radio" id="patian" name="fav_language" value="patian">
+            </div>
+          </div>
+  <div class="btnn">
+    <button
+    type="submit"
+    class="btn w-50 mt-3 "
+    [disabled]="registerForm.invalid"
+  >
+    Register
+  </button>
+  </div>
+
+        </form>
+      </div>
+    </div>
+  </div>

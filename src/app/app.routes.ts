@@ -1,11 +1,31 @@
-import { Routes } from '@angular/router';
+
+import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
-import { DoctorCardComponent } from './doctor-card/doctor-card.component';
+import { LoginComponent } from './components/login/login.component';
+import { ListOfDoctorsComponent } from './components/list-of-doctors/list-of-doctors.component';
 
 export const routes: Routes = [
-  {path: "home" , component: HomeComponent , title:"Home"} ,
 
+    {
+        path: "",
+        component: HomeComponent ,
+        title: "  Home Page "
+    },
 
+    {
+        path: "register",
+        component: RegisterComponent ,
+        title: " Registeration Page "
+    },
+    {
+        path: "login",
+        component: LoginComponent ,
+        title: "login Page "
+    },
+    {
+        path: "doctors",
+        component: ListOfDoctorsComponent ,
+        title: "doctors Page "
+    }
 
-  {path:"" , redirectTo:"home" , pathMatch:"full"}
 ];
