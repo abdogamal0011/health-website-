@@ -1,0 +1,77 @@
+<section class="bg-light">
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-md-4 ">
+        <div class="layerProfialPartOne border-end p-3 vh-100 bg-white">
+          <div class="iamgePartOne w-100 d-flex justify-content-center align-items-center p-3">
+            <img src="../../../../assets/img/avatars/3.jpg" class="w-50 rounded-circle" alt="">
+          </div>
+
+          <div class="caption w-100 d-flex justify-content-between align-items-center">
+            <ul class="list-unstyled ">
+              <li>
+                <p><span class="fw-bold">Email :</span>  abdogamal000</p>
+              </li>
+              <li>
+                <p> <span class="fw-bold">reequest :</span> 55  </p>
+              </li>
+              <li>
+                <p><span class="fw-bold">Specialization :</span> bones</p>
+              </li>
+              <li>
+                <p><span class="fw-bold">rating :</span> 3.5 </p>
+              </li>
+            </ul>
+
+            <ul class="list-unstyled">
+              <li><p><span class="fw-bold">age:</span>32</p> </li>
+              <li><p><span class="fw-bold">gender :</span>female</p> </li>
+              <li><p><span class="fw-bold">number of clinic : </span> 10 c</p> </li>
+
+            </ul>
+
+          </div>
+        </div>
+
+
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-7 ">
+        <div class="layerPartTwo border-start  p-4 bg-white vh-100">
+          <div class="captionPartTwo bg-light p-2" >
+
+            <h1 class="text-center m-0 ">Abdelrhman Gamal Sayed </h1>
+            <p class="text-center fw-bolder fs-4 m-0 text-success">bons</p>
+          </div>
+          <h3 class="fw-bold text-success mt-3 bg-light p-3">comments </h3>
+          <p class="lead" *ngFor="let comment of arary"> {{comment}} ❤️😍😊</p>
+            <div class="d-flex justify-content-end align-items-center">
+
+              <!-- <a class="text-end w-100 text-decoration-none" routerLink="/massege">see more >></a> -->
+            </div>
+          <h3 class="fw-bold text-success mt-3 bg-light p-3">rateing </h3>
+            <table class="table table-striped ">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>ratting</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                @for (ratting of [1,2,3,4]; track $index) {
+                    <tr>
+                    <th>abdogamal</th>
+                    <th >⭐⭐⭐</th>
+                  </tr>
+                  }
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
