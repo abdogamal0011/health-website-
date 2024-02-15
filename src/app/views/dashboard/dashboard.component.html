@@ -110,11 +110,14 @@
 
 <app-widgets-brand [withCharts]="true"></app-widgets-brand>
 
+<app-appointments/>
+
+
 <app-massege></app-massege>
 <c-row>
   <c-col xs>
     <c-card class="mb-4">
-      <c-card-header>Users</c-card-header>
+      <c-card-header>Patient</c-card-header>
       <c-card-body>
         <table
           [hover]="true"
@@ -129,13 +132,15 @@
               <th class="text-center">
                 <svg cIcon name="cilPeople"></svg>
               </th>
-              <th>User</th>
+              <th>Patient</th>
               <th class="text-center">Country</th>
-              <th>Usage</th>
-              <th class="text-center">Payment Method</th>
-              <th>Activity</th>
+              <th>reason of Visit</th>
+              <th>date</th>
             </tr>
           </thead>
+
+
+
           <tbody>
             <tr *ngFor="let user of users; index as i" routerLink="veiwAppointment">
               <td class="text-center">
@@ -156,7 +161,7 @@
               <td class="text-center">
                 <svg
                   cIcon
-                  id="{{ user.country + user.name }}"
+                  id="{{ user.country  }}"
                   name="cif{{ user.country }}"
                   size="xl"
                   title="{{ user.country }}"
@@ -165,27 +170,15 @@
               <td>
                 <div class="d-flex justify-content-between">
                   <div class="float-start">
-                    <strong>{{ user.usage }}%</strong>
+                    <strong>{{ user.usage }}</strong>
                   </div>
-                  <div class="float-end ms-1 text-nowrap">
-                    <small class="text-medium-emphasis">
-                      {{ user.period }}
-                    </small>
-                  </div>
+
                 </div>
-                <c-progress thin>
-                  <c-progress-bar
-                    [value]="user.usage"
-                    color="{{ user.color }}"
-                  ></c-progress-bar>
-                </c-progress>
               </td>
               <td class="text-center">
-                <svg cIcon name="cibCc{{ user.payment }}" size="xl"></svg>
-              </td>
-              <td>
-                <div class="small text-medium-emphasis">Last login</div>
-                <div class="fw-semibold text-nowrap">{{ user.activity }}</div>
+                <small class="text-medium-emphasis">
+                  {{ user.date }}
+                </small>
               </td>
             </tr>
           </tbody>

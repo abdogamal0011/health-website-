@@ -1,3 +1,4 @@
+import { AppointmentsComponent } from './../../appointments/appointments.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -42,7 +43,8 @@ import { MassegeComponent } from 'src/app/massege/massege.component';
     AvatarModule,
     TableModule,
     WidgetsModule,
-    MassegeComponent
+    MassegeComponent,
+    AppointmentsComponent
   ],
   declarations: [DashboardComponent ]
 })

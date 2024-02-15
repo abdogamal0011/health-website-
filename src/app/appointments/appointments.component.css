@@ -1,0 +1,29 @@
+*{
+    color: white;
+}
+
+
+
+.bg-g1{
+    background-color: #11235A;
+}
+.bg-g2{
+    background-color: #596FB7;
+}
+.bg-g3{
+    background-color: #C6CF9B;
+}
+.bg-g3{
+    background-color: #F6ECA9;
+}
+
+@media (max-width: 768px) {
+  .r {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+  }
+}
+
+

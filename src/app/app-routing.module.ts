@@ -9,7 +9,7 @@ import { RegisterComponent } from './views/pages/register/register.component';
 import { ProfialComponent } from './profial/profial.component';
 import { MassegeComponent } from './massege/massege.component';
 import { ViewAppointmentsComponent } from './view-appointments/view-appointments.component';
-
+import {DashListComponent} from './dash-list/dash-list.component';
 
 const routes: Routes = [
   {
@@ -89,6 +89,13 @@ const routes: Routes = [
     component: Page500Component,
     data: {
       title: 'Page 500'
+    }
+  },
+  {
+    path: 'dashboard/dash-list',
+    component: DashListComponent,
+    data: {
+      title: 'Login Page'
     }
   },
   {

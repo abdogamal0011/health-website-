@@ -7,10 +7,10 @@ interface IUser {
   state: string;
   registered: string;
   country: string;
-  usage: number;
+  usage: string;
   period: string;
   payment: string;
-  activity: string;
+  date: string;
   avatar: string;
   status: string;
   color: string;
@@ -28,14 +28,14 @@ export class DashboardComponent implements OnInit {
 
   public users: IUser[] = [
     {
-      name: 'Yiorgos Avraamu',
+      name: 'mona yassen',
       state: 'New',
       registered: 'Jan 1, 2021',
-      country: 'Us',
-      usage: 50,
+      country: 'elmaadi',
+      usage: 'Tonsillitis',
       period: 'Jun 11, 2021 - Jul 10, 2021',
       payment: 'Mastercard',
-      activity: '10 sec ago',
+      date: '10 sec ago',
       avatar: './assets/img/avatars/1.jpg',
       status: 'success',
       color: 'success'
@@ -44,11 +44,11 @@ export class DashboardComponent implements OnInit {
       name: 'Avram Tarasios',
       state: 'Recurring ',
       registered: 'Jan 1, 2021',
-      country: 'Br',
-      usage: 10,
+      country: 'elmaadi',
+      usage: 'Tonsillitis',
       period: 'Jun 11, 2021 - Jul 10, 2021',
       payment: 'Visa',
-      activity: '5 minutes ago',
+      date: '5 minutes ago',
       avatar: './assets/img/avatars/2.jpg',
       status: 'danger',
       color: 'info'
@@ -57,24 +57,24 @@ export class DashboardComponent implements OnInit {
       name: 'Quintin Ed',
       state: 'New',
       registered: 'Jan 1, 2021',
-      country: 'In',
-      usage: 74,
+      country: 'elmaadi',
+      usage: 'Tonsillitis',
       period: 'Jun 11, 2021 - Jul 10, 2021',
       payment: 'Stripe',
-      activity: '1 hour ago',
+      date: '1 hour ago',
       avatar: './assets/img/avatars/3.jpg',
       status: 'warning',
       color: 'warning'
     },
     {
       name: 'Enéas Kwadwo',
-      state: 'Sleep',
+      state: 'elmaadi',
       registered: 'Jan 1, 2021',
       country: 'Fr',
-      usage: 98,
+      usage: 'Tonsillitis',
       period: 'Jun 11, 2021 - Jul 10, 2021',
       payment: 'Paypal',
-      activity: 'Last month',
+      date: 'Last month',
       avatar: './assets/img/avatars/4.jpg',
       status: 'secondary',
       color: 'danger'
@@ -84,10 +84,10 @@ export class DashboardComponent implements OnInit {
       state: 'New',
       registered: 'Jan 1, 2021',
       country: 'Es',
-      usage: 22,
+      usage: 'Tonsillitis',
       period: 'Jun 11, 2021 - Jul 10, 2021',
       payment: 'ApplePay',
-      activity: 'Last week',
+      date: 'Last week',
       avatar: './assets/img/avatars/5.jpg',
       status: 'success',
       color: 'primary'
@@ -97,10 +97,10 @@ export class DashboardComponent implements OnInit {
       state: 'New',
       registered: 'Jan 1, 2021',
       country: 'Pl',
-      usage: 43,
+      usage: 'Tonsillitis',
       period: 'Jun 11, 2021 - Jul 10, 2021',
       payment: 'Amex',
-      activity: 'Yesterday',
+      date: 'Yesterday',
       avatar: './assets/img/avatars/6.jpg',
       status: 'info',
       color: 'dark'
