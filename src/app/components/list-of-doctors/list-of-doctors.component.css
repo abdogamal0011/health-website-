@@ -11,16 +11,16 @@ section
   border-radius: 10px;
 }
 .doctorList:hover{
-  border: 0.5px solid #35d69b;
+  border: 0.5px solid #596FB7;
 }
 .doctorList:hover h6{
   font-weight: 700;
 }
 .btn{
-  background-color: #35d69b;
+  background-color: #596FB7;
   color: #fff;
   border: 1px solid transparent;
-  box-shadow:1px 2px 1px inset #35d69b ;
+  box-shadow:1px 2px 1px inset #596FB7 ;
   font-weight: 600;
 }.pagination {
   --bs-pagination-padding-x: 0.75rem;
@@ -36,10 +36,10 @@ section
   --bs-pagination-hover-border-color: var(--bs-border-color);
   --bs-pagination-focus-color: var(--bs-link-hover-color);
   --bs-pagination-focus-bg: var(--bs-secondary-bg);
-  --bs-pagination-focus-box-shadow: 0 0 0 1px #35d69b;
+  --bs-pagination-focus-box-shadow: 0 0 0 1px #596FB7;
   --bs-pagination-active-color: #fff;
-  --bs-pagination-active-bg: #35d69b;
-  --bs-pagination-active-border-color: #35d69b;
+  --bs-pagination-active-bg: #596FB7;
+  --bs-pagination-active-border-color: #596FB7;
   --bs-pagination-disabled-color: var(--bs-secondary-color);
   --bs-pagination-disabled-bg: var(--bs-secondary-bg);
   --bs-pagination-disabled-border-color: var(--bs-border-color);
@@ -53,9 +53,9 @@ section
 .form-control:focus {
   color: var(--bs-body-color);
   background-color: var(--bs-body-bg);
-  border-color: #35d69b;
+  border-color: #596FB7;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem #35d69b;
+  box-shadow: 0 0 0 0.25rem #596FB7;
 }
 /* .ngx-pagination .current {
   padding: 0.1875rem 0.625rem;
