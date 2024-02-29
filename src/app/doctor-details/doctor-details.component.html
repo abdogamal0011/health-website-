@@ -164,7 +164,12 @@
           <label for="commentInput" class="form-label">Your Comment</label>
           <textarea class="form-control" id="commentInput" rows="3"></textarea>
         </div>
-        <button type="submit" class="btn btn-green">Submit Comment</button>
+
+
+        <!-- here i use click action to test the api  -->
+        <button type="submit" (click)="test()" class="btn btn-green">Submit Comment</button>
+
+        
       </form>
     </div>
 
@@ -179,18 +184,14 @@
           <small class="text-muted"> 22 jan 2021 </small>
         </div>
 
-        <!-- Another Comment -->
-        <div class="bg-light p-2 mb-2">
-          <p>جزاك الله خيرا .</p>
-          <small class="text-muted">Posted by: gamal ahmed</small>
-          <br>
-          <small class="text-muted">22 jan 2021</small>
-        </div>
-
-        <!-- Add more comments as needed -->
       </div>
     </div>
 
+
   </div>
+
+
+
+
 
 </section>
