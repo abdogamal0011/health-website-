@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ListDoctor } from '../interface/list-doctor';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +10,7 @@ import { ListDoctor } from '../interface/list-doctor';
 export class ListDoctorService {
 
    allDoctor = `https://ecommerce.routemisr.com/api/v1/products` ;
+
 
   constructor( private http:HttpClient) { }
 
@@ -25,4 +28,6 @@ export class ListDoctorService {
   pasination(pageNumber : number = 1){
     return this.http.get(`https://ecommerce.routemisr.com/api/v1/products?page=${pageNumber}`)
   }
+
+
 }
