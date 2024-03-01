@@ -60,15 +60,13 @@
   </div>
 
   <div class="mx-5 BookContainer bg-light mb-2">
-
     <div class="bg-green">
       <h1 class="text-light px-3 text-center">Book Now</h1>
     </div>
     <div class="d-flex justify-content-evenly">
-
       <div>
         <i class="fa-solid fa-coins"></i>
-        <span class="px-2">{{doctor.price}} Eg</span>
+        <span class="px-2">{{ doctor.price }} Eg</span>
       </div>
       <div>
         <i class="fa-solid fa-location-dot"></i>
@@ -79,119 +77,244 @@
         <span class="px-2">Waiting for : 8 min</span>
       </div>
     </div>
-    <hr>
+    <hr />
     <div class="imgClinic-container">
-      <img src="https://cdn-dr-images.vezeeta.com/Assets/Images/Entities/entd7e0d5aceda20d36/Facilities/misr-modern-clinics_20240101061913491.jpg" alt="" class="imgClinic">
+      <img
+        src="https://cdn-dr-images.vezeeta.com/Assets/Images/Entities/entd7e0d5aceda20d36/Facilities/misr-modern-clinics_20240101061913491.jpg"
+        alt=""
+        class="imgClinic"
+      />
       عيادات مصر الحديثه
     </div>
     <button
-    type="button"
-    class="btn bg-green mt-2 w-100"
-    data-bs-toggle="modal"
-    data-bs-target="#staticBackdrop"
-  >
-    احجز الان
-  </button>
+      type="button"
+      class="btn bg-green mt-2 w-100"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+    >
+      احجز الان
+    </button>
 
-  <!-- Modal -->
-  <div
-    class="modal fade "
-    id="staticBackdrop"
-    data-bs-backdrop="static"
-    data-bs-keyboard="false"
-    tabindex="-1"
-    aria-labelledby="staticBackdropLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">
-            ادخل بيانات الحجز
-          </h1>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">
-          <div class="d-flex flex-column">
-            <div class="inputDiv">
-              <i class="fa-solid fa-user"></i>
-              <input type="text" placeholder="Patient name" />
-            </div>
-            <div class="inputDiv">
-              <i class="fa-solid fa-phone"></i>
-              <input type="number" placeholder="phone number" />
-            </div>
-            <div class="inputDiv">
-              <i class="fa-solid fa-envelope"></i>
-              <input type="email" placeholder="Email" />
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">
+              ادخل بيانات الحجز
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="d-flex flex-column">
+              <div class="inputDiv">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" placeholder="Patient name" />
+              </div>
+              <div class="inputDiv">
+                <i class="fa-solid fa-phone"></i>
+                <input type="number" placeholder="phone number" />
+              </div>
+              <div class="inputDiv">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" placeholder="Email" />
+              </div>
             </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Close
-          </button>
-          <button type="button" class="btn btn-primary text-center">
-           book
-          </button>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary text-center">
+              book
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  </div>
-
-
-  <div class="mx-5 BookContainer bg-light mb-2">
-
+  <div class="mx-5 BookContainer bg-light mb-5">
     <div class="bg-green">
       <h1 class="text-light px-3 text-center">Comments</h1>
     </div>
 
     <!-- Comment Form -->
     <div class="p-3">
-      <form>
-        <div class="mb-3">
-          <label for="commentInput" class="form-label">Your Comment</label>
-          <textarea class="form-control" id="commentInput" rows="3"></textarea>
-        </div>
+      <form (ngSubmit)="submitForm()">
 
+        <section class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <h2>Doctor Details</h2>
+              <p>{{ doctor.name }}  </p>
+              <p>Rating: {{ doctor.rating }}</p>
+              <p>Review: {{ doctor.review }}</p>
+              <p>Appointment: {{ doctor.appointment }}</p>
+            </div>
+            <div class="col-md-6">
+              <h3>Add Comment</h3>
+              <form (submit)="submitForm()">
+                <!-- Additional textarea for text comment -->
+                <div class="mb-3">
+                  <label for="textComment" class="form-label"
+                    >Text Comment</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="textComment"
+                    rows="3"
+                    [(ngModel)]="textComment"
+                    name="textComment"
+                  ></textarea>
+                </div>
 
-        <!-- here i use click action to test the api  -->
-        <button type="submit" (click)="test()" class="btn btn-green">Submit Comment</button>
+                <div class="mb-3">
+                  <label for="rate" class="form-label">Rate</label>
+                  <select
+                    class="form-select"
+                    id="rate"
+                    [(ngModel)]="rate"
+                    name="rate"
+                  >
+                    <option value="0"> No rate</option>
+                    <option value="1"> 1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
 
-        
+                <!-- Button to add new comment -->
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="addNewComment()"
+                >
+                <i class="fas fa-plus"></i> Add New Comment
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Comment List -->
+          <div class="mb-3" *ngFor="let comment of comments; let i = index">
+            <div class="bg-light p-2 mb-2">
+              <ng-container *ngIf="editIndex !== i; else editMode">
+                <p>{{ comment.text }}</p>
+                <!-- <ng-container *ngIf="comment.rating === 0">
+                  <span>No rate</span>
+                </ng-container>
+                <ng-container *ngIf="comment.rating === 1">
+                  <i class="fas fa-star"></i>
+                </ng-container>
+                <ng-container *ngIf="comment.rating === 2">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </ng-container>
+                <ng-container *ngIf="comment.rating === 3 ">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </ng-container>
+                <ng-container *ngIf="comment.rating === 4" >
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </ng-container>
+                <ng-container *ngIf="comment.rating === 5" >
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </ng-container> -->
+              </ng-container>
+              <ng-template #editMode>
+                <textarea class="form-control mb-2" [(ngModel)]="editedText" name="textComment" title="text"></textarea>
+              </ng-template>
+              <div class="mb-2">
+                <div class="float-end" >
+                  @if (comment.rating == 0) {
+                  }
+                  @if (comment.rating == 1) {
+                    <i class="fas fa-star text-warning"></i>
+                  }
+                  @if (comment.rating == 2) {
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                  }
+                  @if (comment.rating == 3) {
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                  }
+                  @if (comment.rating == 4) {
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                  }
+                  @if (comment.rating == 5) {
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                  }
+                </div>
+                <br>
+                @if (comment.rating !=0) {
+                  <button class="btn btn-sm btn-primary float-end " (click)="editRating(i)">Edit Rating</button>
+                }
+
+              </div>
+              <br />
+              <small class="text-muted">Posted by: {{ comment.user }}</small>
+              <br />
+              <small class="text-muted">{{ comment.date }}</small>
+
+              <!-- Edit, Save, and Cancel buttons -->
+              <div class="mt-2">
+                <ng-container *ngIf="editIndex !== i">
+                  <button class="btn btn-sm btn-primary" (click)="editComment(i)">Edit</button>
+                </ng-container>
+                <ng-container *ngIf="editIndex === i">
+                  <button class="btn btn-sm btn-success" (click)="saveEditedComment()">Save</button>
+                  <button class="btn btn-sm btn-secondary" (click)="cancelEdit()">Cancel</button>
+                </ng-container>
+                <button class="btn btn-sm btn-danger mx-3" (click)="deleteComment(i)">Delete</button>
+              </div>
+            </div>
+          </div>
+
+        </section>
       </form>
     </div>
-
-    <!-- Comment List -->
-    <div class="p-3">
-      <div class="mb-3">
-        <!-- Single Comment -->
-        <div class="bg-light p-2 mb-2">
-          <p>"اكثر من رائع ...."</p>
-          <small class="text-muted">Posted by: Islam Yasser</small>
-          <br>
-          <small class="text-muted"> 22 jan 2021 </small>
-        </div>
-
-      </div>
-    </div>
-
-
   </div>
-
-
-
-
-
 </section>
+
+
+
+

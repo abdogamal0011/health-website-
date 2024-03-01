@@ -1,5 +1,6 @@
 section{
   background-color: #b7b7b783;
+  overflow: hidden;
 }
 
 .line {
@@ -35,8 +36,9 @@ section{
   direction: rtl ;
 }
 
-
-
+.stars .fa-star.fas {
+  color: yellow;
+}
 
 
 
