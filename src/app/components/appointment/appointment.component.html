@@ -1,0 +1,36 @@
+@if (this.cartDetalis.data) {
+<section class=" rounded  bg-light-subtle m-3 p-2">
+  <div class="container">
+    <a class="btn" (click)="clearAllAppintment()" RouterLink="/home">Clear Appintments</a>
+    <h1 class="mt-5">Shop Cart  </h1>
+    <p > <b class="text-success">toala Price : </b> {{this.cartDetalis.data.totalCartPrice }} EGP </p>
+      @for (Appintment of this.cartDetalis.data.products ; track $index) {
+
+        <div class="row gy-2 border-bottom p-2">
+          <div class="col-md-1">
+            <img [src]="Appintment.product.imageCover" class="w-100" alt="{{Appintment.product.title}}">
+          </div>
+          <div class="col-md-9">
+            <h6 class="text-success fs-3">{{Appintment.product.title}}</h6>
+            <p class="mb-0"><b>brand : </b>{{Appintment.product.brand.name}}</p>
+            <p class="small mb-0"><b>price : </b>{{Appintment.price}}</p>
+            <button #btnRemove (click)="remove(Appintment.product._id , btnRemove)" class="btn text-success m-0 p-1"><i class="fas fa-trash-can px-1"> </i>Remove</button>
+          </div>
+          <div class="col-md-2 d-flex justify-content-center align-items-center">
+            <button #brnUpdata (click)="changeCount(Appintment.count + 1 , Appintment.product._id , brnUpdata)"class="btn border-success">+</button>
+            <span class="px-2">{{Appintment.count}}</span>
+            <button #brnUpdata (click)="changeCount(Appintment.count - 1 , Appintment.product._id , brnUpdata)" class="btn border-success">-</button>
+          </div>
+
+        </div>
+
+      }
+  </div>
+</section>
+}@else {
+    <h1 class="text-center">not found Appintment....</h1>
+
+
+}
+
+

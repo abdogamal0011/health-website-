@@ -1,0 +1,162 @@
+<div class="container register-container  rounded w-50 p-4 ">
+    <div class="card shadow border">
+      <div class="card-header ">
+        <h3 class="reg ">Register</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="registerForm" class="p-3" (ngSubmit)="handleForm()">
+          <div class="form-group">
+            <input
+            placeholder="Enter the user Name "
+              type="text"
+              class="form-control my-3 "
+              id="name"
+              formControlName="name"
+            />
+
+            @if (registerForm.get('name')?.errors && registerForm.get('name')?.touched) {
+            <div class="alert alert-danger p-1 ">
+              @if (registerForm.get('name')?.getError('required')){
+                <p class="mb-0" >name is requierd</p>
+              }
+              @if (registerForm.get('name')?.getError('minlength')){
+              <p class="mb-0">name is minLenght 2</p>
+              }
+              @if (registerForm.get('name')?.getError('maxlength')){
+              <p class="mb-0">name is maxLenght 20</p>
+              }
+            </div>
+          }
+
+          </div>
+
+
+          <div class="form-group">
+
+            <input
+            placeholder="Enter the Email "
+              type="email"
+              class="form-control my-3"
+              id="email"
+              formControlName="email"
+            />
+
+            @if (registerForm.get('email')?.errors && registerForm.get('email')?.touched) {
+              <div class="alert alert-danger p-1 ">
+                @if (registerForm.get('email')?.getError('required')){
+                  <p class="mb-0" >name is requierd</p>
+                }
+                @if (registerForm.get('email')?.getError('email')){
+                <p class="mb-0">th email is correct </p>
+                }
+              </div>
+            }
+          </div>
+
+          <!-- <div class="form-group  d-flex justify-content-around align-items-center">
+            <div class="male">
+
+              <label class="p-2" for="Male">Male :</label>
+              <input  type="radio" id="Male" name="fav_language" value="Male">
+            </div>
+
+              <div class="female">
+                <label class="p-2" for="Female">Female :</label>
+                <input  type="radio" id="Female" name="fav_language" value="Female">
+              </div>
+
+
+          </div> -->
+
+          <div class="form-group">
+
+            <input
+            placeholder="Enter the Password "
+              type="password"
+              class="form-control my-3"
+              id="password"
+              formControlName="password"
+            />
+            @if (registerForm.get('password')?.errors && registerForm.get('password')?.touched) {
+              <div class="alert alert-danger p-1 ">
+                @if (registerForm.get('password')?.getError('required')){
+                  <p class="mb-0" >name is requierd</p>
+                }
+                @if (registerForm.get('password')?.getError('pattern')){
+                <p class="mb-0">must be at least 6 chars </p>
+                }
+
+              </div>
+            }
+          </div>
+
+          <div class="form-group">
+            <input
+            placeholder="Enter the rePassword "
+              type="password"
+              class="form-control my-3"
+              id="rePassword"
+              formControlName="rePassword"
+            />
+            @if (registerForm.get('rePassword')?.errors && registerForm.get('rePassword')?.touched) {
+              <div class="alert alert-danger p-1 ">
+                @if (registerForm.get('rePassword')?.getError('required')){
+                  <p class="mb-0" >name is requierd</p>
+                }
+                @if (registerForm.get('rePassword')?.getError('mismatch')){
+                <p class="mb-0">password confirmation is incorrect</p>
+                }
+
+              </div>
+            }
+          </div>
+          <div class="form-group">
+
+    <input type="tel" id="phone" formControlName="phone"
+         class="form-control my-3"
+         placeholder="Enter the phone"
+    >
+
+    @if (registerForm.get('phone')?.errors && registerForm.get('phone')?.touched) {
+      <div class="alert alert-danger p-1 ">
+        @if (registerForm.get('phone')?.getError('required')){
+          <p class="mb-0" >phone is requierd</p>
+        }
+        @if (registerForm.get('phone')?.getError('pattern')){
+        <p class="mb-0">accept only egypt phone numbers </p>
+        }
+
+      </div>
+    }
+          </div>
+          <!-- <div class="form-group  d-flex justify-content-around align-items-center">
+            <div class="doctor">
+              <label class="p-2" for="Doctor" >Doctor :</label>
+              <input class="p-0" type="radio" id="Doctor" name="fav_language2" value="Doctor">
+            </div>
+            <div class="patian">
+
+              <label class="p-2" for="patian">patian : </label>
+              <input type="radio" id="patian" name="fav_language2" value="patian">
+            </div>
+          </div> -->
+  <div class="btnn">
+    <button
+    type="submit"
+    class="btn w-50 mt-3 "
+    [disabled]="registerForm.invalid"
+  >
+    Register
+    @if (isLoading) {
+      <span><i class="fas fa-spin fa-spinner"></i></span>
+    }
+  </button>
+  </div>
+
+        </form>
+        @if(errMsg) {
+          <p class="alert alert-danger p-1 w-50 mb-0">{{errMsg}}</p>
+        }
+      </div>
+    </div>
+  </div>
