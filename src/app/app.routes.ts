@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ListOfDoctorsComponent } from './components/list-of-doctors/list-of-doctors.component';
 import { Routes } from '@angular/router';
 import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
+import { ApointmentComponent } from './apointment/apointment.component';
 
 export const routes: Routes = [
 
@@ -12,6 +13,12 @@ export const routes: Routes = [
         path: "",
         component: HomeComponent ,
         title: "  Home Page "
+    },
+  
+    {
+        path: "ap",
+        component: ApointmentComponent ,
+        title: "  apointment  Page "
     },
 
     {
