@@ -5,6 +5,8 @@ import { LoginComponent } from './components/login/login.component';
 import { ListOfDoctorsComponent } from './components/list-of-doctors/list-of-doctors.component';
 import { Routes } from '@angular/router';
 import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
+import path from 'path';
+import { TestComponent } from './test/test.component';
 
 export const routes: Routes = [
 
@@ -39,6 +41,11 @@ export const routes: Routes = [
       redirectTo:"doctorDetails/:id" ,
       pathMatch:"full"
 
+    } ,
+    {
+      path:"**" ,
+      component:TestComponent ,
+      title : 'test'
     }
 
 ];
