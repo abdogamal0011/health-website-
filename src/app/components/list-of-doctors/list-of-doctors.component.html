@@ -1,4 +1,4 @@
-<section class="listOfDoctor">
+<!-- <section class="listOfDoctor">
 
   <div class="container">
     <div class="title p-3 ">
@@ -31,7 +31,7 @@
       totalItems: total } ; track doctor.id) {
 
 
-        <div class="col-md-2" [routerLink]= '["doctorDetails" , doctor.id ]'>
+        <div class=" col-lg-4 col-md-6 col-sm-12 " [routerLink]= '["doctorDetails" , doctor.id ]'>
           <div class="doctorList text-center ">
 
             <div class="imageDoctor d-flex justify-content-center align-items-center">
@@ -39,7 +39,7 @@
               <img [src]="doctor.imageCover" class="w-25 rounded-circle" [alt]="doctor.title">
             </div>
             <h6>{{doctor.title | searchDoctor :1}} </h6>
-            <p class="text-muted">{{doctor.slug | searchDoctor : 3}}</p>
+            <p class="text-muted">{{doctor.description | searchDoctor : 3}}</p>
             <p>
               @for (star of [1,2,3,4,5]; track $index) {
               <i [class.fa-solid]="doctor.ratingsAverage >= star" class="fa-regular fa-star "style="color: #FFD43B;"></i>
@@ -71,4 +71,43 @@
   </pagination-controls>
 </div>
 
+  </section> -->
+
+  <section>
+
+    @for (doctor of doctors.doctors; track doctor.id) {
+<div class="doctor-card">
+  <div class="header">
+      <h2>{{ doctor.name }}</h2>
+      <p>{{ doctor.specialization }}</p>
+  </div>
+  <div class="details">
+      <div class="detail-item">
+          <span class="label">Age:</span>
+          <span>{{ doctor.age }}</span>
+      </div>
+      <div class="detail-item">
+          <span class="label">Gender:</span>
+          <span>{{ doctor.gender }}</span>
+      </div>
+      <div class="detail-item">
+          <span class="label">Email:</span>
+          <span>{{ doctor.email }}</span>
+      </div>
+      <div class="detail-item">
+          <span class="label">Phone:</span>
+          <span>{{ doctor.phone }}</span>
+      </div>
+      <div class="detail-item">
+          <span class="label">Department:</span>
+          <span>{{ doctor.department }}</span>
+      </div>
+      <div class="detail-item">
+          <span class="label">Description:</span>
+          <span>{{ doctor.description }}</span>
+      </div>
+  </div>
+</div>
+
+  }
   </section>
