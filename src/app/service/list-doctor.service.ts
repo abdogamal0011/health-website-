@@ -2,10 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ListDoctor } from '../interface/list-doctor';
 import { Observable } from 'rxjs';
-<<<<<<< HEAD
-=======
-
->>>>>>> 6eb406f3a3df5719882368b02d286fdf47652d16
 
 @Injectable({
   providedIn: 'root'
