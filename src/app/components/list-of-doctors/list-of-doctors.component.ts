@@ -21,6 +21,7 @@ export class ListOfDoctorsComponent {
 
   products : any ;
   doctors: any;
+  doctors: any;
   pageSize:number = 0; //limit
   curentPage:number = 1;
   total :number =0
@@ -56,6 +57,10 @@ export class ListOfDoctorsComponent {
 
 
    });
+
+
+
+
 
   }
 

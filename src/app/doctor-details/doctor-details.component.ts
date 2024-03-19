@@ -1,3 +1,5 @@
+import { CommentsService } from './../service/comments.service';
+import { DoctorsApiService } from './../service/doctors-api.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ListDoctorService } from '../service/list-doctor.service';
@@ -26,23 +28,25 @@ interface Comment {
   ]
 })
 export class DoctorDetailsComponent implements OnInit {
-  submitForm() {
-    console.log('Form submitted');
-  }
+
   textComment :string = '' ;
   rate : any ;
   doctor: any;
-  comments: Comment[] = [];
-  newCommentText: string = '';
   editIndex: number = -1;
   editedText: string = '';
   hoveredRate: number = 0;
+  comments : any[] | undefined ;
+  patientId = 3 ;
+  doctorId = 7 ;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private listDoctorService: ListDoctorService,
     private apiService: ApiService,
-    private dialog: MatDialog
+    private dialog: MatDialog  ,
+    private  doctorsApiService:DoctorsApiService ,
+    private commentApi : CommentsService
+
   ) {}
 
   ngOnInit(): void {
@@ -51,113 +55,47 @@ export class DoctorDetailsComponent implements OnInit {
       this.doctor = item.data;
     });
 
-    this.apiService.getData().subscribe((data) => {
-      this.comments = data.map((doctor: any) => doctor.comment).filter(Boolean).flat();
-    });
+    this.doctorsApiService.getOneDoctors(id).subscribe((data)=> console.log(data))
+
+    this.commentApi.getAllcomments(7).subscribe(  (data)=>{ this.comments = data.data
+      console.log( "comment" , data.data );
+    })
+
+
 
   }
 
 
 
 
-  hoverStar(rate: number) {
-    this.hoveredRate = rate;
-  }
 
-  setRating(rating: number) {
-    this.rate = rating;
-  }
-
-  isStarFilled(star: number): boolean {
-    return this.hoveredRate >= star || this.rate >= star;
-  }
-
-  addNewComment() {
-    const newComment: Comment = {
-      text: this.textComment,
-      user: 'Abdo Gamal',
-      date: new Date().toISOString() ,
-      rating: this.rate
+  submitForm() {
+    const commentData = {
+      comment: this.textComment,
+      rating: this.rate,
+      patient_id: this.patientId,
+      doctor_id: this.doctorId
     };
 
-    if (!this.comments) {
-      console.error("Comments array is not initialized.");
-      this.comments = [];
-    }
 
-    this.comments.push(newComment);
-
-    this.textComment = '';
-
-    const data = {
-      comments: this.comments,
-      rate: this.rate
-    };
-
-    this.apiService.postData(data).subscribe((response) => {
-      console.log("Response from API:", response);
-    });
-  }
-
-  editComment(index: number) {
-    this.editIndex = index;
-    this.editedText = this.comments[index].text;
-  }
-
-  saveEditedComment() {
-    if (this.editIndex !== -1) {
-      this.comments[this.editIndex].text = this.editedText;
-      this.editIndex = -1;
-      this.editedText = '';
-
-      this.updateCommentData();
-    }
-  }
-
-  cancelEdit() {
-    this.editIndex = -1;
-    this.editedText = '';
-  }
-
-  deleteComment(index: number) {
-    this.comments.splice(index, 1);
-
-    this.updateCommentData();
-  }
-
-  private updateCommentData() {
-    const data = {
-      comments: this.comments,
-      rate: 1
-    };
-
-    this.apiService.putData(this.doctor.id, data).subscribe(() => {
-      console.log(data);
-
-    });
-  }
-
-    editRating(index: number) {
-      const newRating = prompt('Enter the new rating:');
-
-      this.comments[index].rating = 0;
-
-      if (newRating !== null && newRating !== '') {
-
-        this.comments[index].rating = parseInt(newRating);
-
-        console.log(newRating);
-
+    this.commentApi.addComment(commentData).subscribe(
+      (response) => {
+        console.log('Comment added successfully:', response);
+        this.textComment = '';
+        this.rate = 0;
+      },
+      (error) => {
+        console.error('Error adding comment:', error);
       }
-    }
-
-  deleteRating(index: number) {
-    const confirmed = confirm('Are you sure you want to delete this rating?');
-    if (confirmed) {
-      this.comments[index].rating = null; // Set the rating to null
-      this.updateCommentData(); // Update any data if needed
-    }
+    );
   }
+
+
+
+
+
+
+
 
 
 }

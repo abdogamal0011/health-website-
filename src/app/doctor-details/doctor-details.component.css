@@ -1,7 +1,14 @@
 section{
-  background-color: #b7b7b783;
+  background-image: url(../../assets/Photos/bg10.jpg) !important ;
+  object-fit: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
   overflow: hidden;
+  padding: 50px 10px;
+  background-attachment: fixed;
+
 }
+
 
 .line {
   width: 0;
@@ -12,13 +19,16 @@ section{
 }
 
 .img {
-  min-width: 25%;
+  width: 50% !important;
+  padding: 0 50px;
+  height: 40vh;
 }
 
 .img img {
   object-fit: contain;
   height: 100%;
   max-height: 400px;
+  border-radius: 90px;
 }
 
 .homepage {
@@ -99,4 +109,47 @@ section{
 .bg-green
 {
   background-color: #35d69b;
+}
+.BookContainer
+{
+  height: 100px;
+  text-align: center;
+  margin-top: 50px;
+}
+.btn-book
+{
+  height: 100%;
+  width: 100px;
+  border-radius: 50% !important;
+}
+
+.btn-book {
+  border-radius: 100%;
+  transition: all 0.3s ease-in-out 0s;
+  box-shadow: rgba(4, 179, 13, 0.698) 0px 0px 0px 0px;
+  animation: 1.2s cubic-bezier(0.8, 0, 0, 1) 0s infinite normal none running pulse;
+  align-items: center;
+  border: 0;
+}
+
+.btn-book:is(:hover, :focus) {
+  transform: scale(1.2);
+}
+
+@keyframes pulse {
+  100% {
+    box-shadow: 0 0 0 45px rgba(193,244,246,0);
+  }
+}
+
+
+.patient-image
+{
+  border-radius: 50%;
+}
+.comment-container
+{
+  border-left: 2px solid blue;
+  font-weight: bold;
+  font-size: x-large;
 }
