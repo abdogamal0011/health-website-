@@ -35,17 +35,12 @@ section{
   direction: rtl ;
 }
 
-
-
-
-
-
 .title,
 .text .text-white,
 .vote ,
 .description{
-  /* animation: titleMove 2s forwards ease-in; */
-  /* transform: translateX(-110%); */
+   animation: titleMove 2s forwards ease-in;
+   transform: translateX(-110%);
 }
 
 

@@ -22,7 +22,7 @@
         </p>
         <p class="description pt-lg-2">
           <span class="fw-bold">Address </span>:
-          <span>المنيل : شارع المنيل الرئيسي - ميدان الباشا </span>
+          <span>المنيل : شارع المنيل الر��يسي - ميدان البا��ا </span>
         </p>
         <p class="description pt-lg-2">
           <span class="fw-bold">Feas </span>:
@@ -82,7 +82,7 @@
     <hr>
     <div class="imgClinic-container">
       <img src="https://cdn-dr-images.vezeeta.com/Assets/Images/Entities/entd7e0d5aceda20d36/Facilities/misr-modern-clinics_20240101061913491.jpg" alt="" class="imgClinic">
-      عيادات مصر الحديثه
+      عيادات مصر الحدي��ه
     </div>
     <button
     type="button"
@@ -90,7 +90,7 @@
     data-bs-toggle="modal"
     data-bs-target="#staticBackdrop"
   >
-    احجز الان
+    ا��جز الان
   </button>
 
   <!-- Modal -->
@@ -107,7 +107,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="staticBackdropLabel">
-            ادخل بيانات الحجز
+            ا��خل بيانات الحجز
           </h1>
           <button
             type="button"
@@ -158,38 +158,23 @@
     </div>
 
     <!-- Comment Form -->
-    <div class="p-3">
-      <form>
-        <div class="mb-3">
-          <label for="commentInput" class="form-label">Your Comment</label>
-          <textarea class="form-control" id="commentInput" rows="3"></textarea>
-        </div>
-        <button type="submit" class="btn btn-green">Submit Comment</button>
-      </form>
-    </div>
+    <!-- ratings.component.html -->
+
+    <form (submit)="addRating(data)">
+      <input type="text" name="rating" [(ngModel)]="data.rating">
+      <input type="text" [(ngModel)]="data.review" name="review">
+      <!-- <button type="submit">Add Rating</button> -->
+    </form>
+
+    <button (click)="getRatings()">Get Ratings</button>
+
+    <!-- <div *ngFor="let rating of ratings">
+      <p>{{ rating.value }} - {{ rating.comment }}</p>
+      <button (click)="editRating(rating.id, updatedRatingData)">Edit</button>
+      <button (click)="deleteRating(rating.id)">Delete</button>
+    </div> -->
 
     <!-- Comment List -->
-    <div class="p-3">
-      <div class="mb-3">
-        <!-- Single Comment -->
-        <div class="bg-light p-2 mb-2">
-          <p>"اكثر من رائع ...."</p>
-          <small class="text-muted">Posted by: Islam Yasser</small>
-          <br>
-          <small class="text-muted"> 22 jan 2021 </small>
-        </div>
-
-        <!-- Another Comment -->
-        <div class="bg-light p-2 mb-2">
-          <p>جزاك الله خيرا .</p>
-          <small class="text-muted">Posted by: gamal ahmed</small>
-          <br>
-          <small class="text-muted">22 jan 2021</small>
-        </div>
-
-        <!-- Add more comments as needed -->
-      </div>
-    </div>
 
   </div>
 

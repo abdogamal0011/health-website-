@@ -6,11 +6,13 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ListOfDoctorsComponent } from './components/list-of-doctors/list-of-doctors.component';
 import { CommonModule } from '@angular/common';
+import { ProfialComponent } from './components/profial/profial.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet , CommonModule ,NavbarComponent , HomeComponent,FooterComponent , RegisterComponent , ListOfDoctorsComponent],
+  imports: [RouterOutlet , CommonModule  , ProfialComponent ,NavbarComponent , HomeComponent,FooterComponent , RegisterComponent , ListOfDoctorsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
