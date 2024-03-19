@@ -6,6 +6,7 @@ import { SearchHomePipe } from '../../pipe/search-home.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { DoctorsApiService } from '../../service/doctors-api.service';
 
 @Component({
   selector: 'app-list-of-doctors',
@@ -18,11 +19,11 @@ export class ListOfDoctorsComponent {
   inputSearch : string= ''
 
   products : any ;
-  doctors: ListDoctor[]=[];
+  doctors: any;
   pageSize:number = 0; //limit
   curentPage:number = 1;
   total :number =0
-  constructor(private listDoctors:ListDoctorService) {  }
+  constructor(private listDoctors:ListDoctorService , private _doctorApi:DoctorsApiService ) {  }
 
   ngOnInit():void{
     this.listDoctors.getAllDoctor().subscribe(
@@ -31,11 +32,9 @@ export class ListOfDoctorsComponent {
         this.pageSize = this.products.metadata.limit;
         this.curentPage =  this.products.metadata.currentPage;
         this.total =  this.products.results
-     }
-
-
+     } ,
   );
-
+  this._doctorApi.getAllDoctors().subscribe(data=> {this.doctors= data,console.log(this.doctors);})
 
 
   }
@@ -51,6 +50,10 @@ export class ListOfDoctorsComponent {
 
 
    });
+
+
+
+
 
   }
 
