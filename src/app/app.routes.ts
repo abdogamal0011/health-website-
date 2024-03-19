@@ -1,3 +1,4 @@
+import { ApointmentComponent } from './apointment/apointment.component';
 
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
@@ -5,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ListOfDoctorsComponent } from './components/list-of-doctors/list-of-doctors.component';
 import { Routes } from '@angular/router';
 import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
+import { TestComponent } from './test/test.component';
 
 export const routes: Routes = [
 
@@ -12,6 +14,12 @@ export const routes: Routes = [
         path: "",
         component: HomeComponent ,
         title: "  Home Page "
+    },
+
+    {
+        path: "ap",
+        component: ApointmentComponent ,
+        title: "  apointment  Page "
     },
 
     {
@@ -39,6 +47,12 @@ export const routes: Routes = [
       redirectTo:"doctorDetails/:id" ,
       pathMatch:"full"
 
+    } ,
+    {
+      path:"**" ,
+      component:TestComponent ,
+      title : 'test'
     }
 
+    
 ];
