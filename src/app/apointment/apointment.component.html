@@ -1,0 +1,92 @@
+<h1 class="header">Hello Now You Can Reserve With Different Doctors</h1>
+<div class="container m-1">
+  <form [formGroup]="appForm" (ngSubmit)="handleSubmitForm()" >
+    <div class="mb-3">
+      <label for="Til" class="form-label">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="titleInput"
+        aria-describedby="TitleHelp"
+        name="title"
+        formControlName="title"
+     
+      />
+       @if (appForm.controls['title'].invalid && appForm.controls['title'].touched) {
+        @if (appForm.controls['title'].errors?.['required']) {
+            <span  class="form-text text-danger">these field is required.</span>
+
+        }
+        @if (appForm.controls['title'].errors?.['minlength']) {
+            <span  class="form-text text-danger">Min length is 5.</span>
+
+        }
+      } 
+
+    </div>
+    <div class="mb-3">
+      <label for="Description" class="form-label">Description</label>
+      <textarea
+        class="form-control"
+        id="Description"
+        cols="5"
+        rows="5"
+        name="Description" 
+        formControlName="Description"
+        
+
+      ></textarea>
+      @if (appForm.controls['Description'].invalid && appForm.controls['Description'].touched) {
+        @if (appForm.controls['Description'].errors?.['required']) {
+            <span  class="form-text text-danger">these field is required.</span>
+
+        }
+        @if (appForm.controls['Description'].errors?.['minlength']) {
+            <span  class="form-text text-danger">Min length is 10.</span>
+
+        }
+        @if (appForm.controls['Description'].errors?.['maxlength']) {
+            <span  class="form-text text-danger">Min length is 100.</span>
+
+        }
+      } 
+      
+    </div>
+    <div class="mb-3">
+      <label for="Til" class="form-label">Price</label>
+      <input
+        type="number"
+        class="form-control"
+        id="Price "
+        aria-describedby="priceHelp"
+        name="Price"
+        formControlName="Price"
+        
+
+      />
+    </div>
+    @if (appForm.controls['Price'].invalid && appForm.controls['Price'].touched) {
+        @if (appForm.controls['Price'].errors?.['required']) {
+            <span  class="form-text text-danger">these field is required.</span>
+
+        }
+       
+      } 
+
+    <button type="submit" class="btn btn-primary" [disabled]="appForm.invalid">Submit</button>
+  </form>
+</div>
+<!--1-#appForm=ngForm
+    2-(ngSubmit)="handleSubmitForm(appForm)
+     name="title"
+        ngModel
+        required
+        minlength="5"
+        #title="ngModel"
+        ts
+        عملت import لل ngmodel
+        وعرفت الفانكشن 
+
+
+
+-->

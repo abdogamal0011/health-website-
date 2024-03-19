@@ -1,10 +1,16 @@
 section
 {
   background-color: #b7b7b783;
+  background-image: url('doctor.jpg'); 
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+ 
+  background-color: #f0f0f0;
 }
 
-.doctorList{
-  background: #fff;
+.doctorList {
+  background-color: rgba(255, 255, 255, 0.7); /* Adjust the alpha value (0.7) for transparency */
   color: #000;
   transition: all 3s;
   padding: 10px;

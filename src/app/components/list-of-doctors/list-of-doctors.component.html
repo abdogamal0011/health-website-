@@ -25,10 +25,7 @@
   <input type="search" placeholder="search....." class="form-control w-50 m-auto mb-5" name="search" [(ngModel)]="inputSearch" >
   <div class="row g-4">
 
-      @for (doctor of products.data| searchHome:inputSearch | paginate: { id: 'doctorPaginater',
-      itemsPerPage: pageSize,
-      currentPage: curentPage,
-      totalItems: total } ; track doctor.id) {
+    @for (doctor of doctors.doctors; track doctor.id) {
 
 
         <div class="col-md-2" [routerLink]= '["doctorDetails" , doctor.id ]'>
@@ -38,19 +35,22 @@
 
               <img [src]="doctor.imageCover" class="w-25 rounded-circle" [alt]="doctor.title">
             </div>
-            <h6>{{doctor.title | searchDoctor :1}} </h6>
-            <p class="text-muted">{{doctor.slug | searchDoctor : 3}}</p>
+            <h6>{{doctor.name | searchDoctor :1}} </h6>
+            <p class="text-muted">{{doctor.description | searchDoctor : 3}}</p>
             <p>
               @for (star of [1,2,3,4,5]; track $index) {
               <i [class.fa-solid]="doctor.ratingsAverage >= star" class="fa-regular fa-star "style="color: #FFD43B;"></i>
               }
             </p><i class="" ></i>
 
-            <div class="btn">Appointment</div>
+            <div class="btn custom-btn">Appointment</div>
 
           </div>
         </div>
       }
+
+
+
 
   </div>
   </div>
@@ -72,3 +72,12 @@
 </div>
 
   </section>
+
+<!-- <section>
+
+  @for (doctor of doctors.doctors; track doctor.id) {
+    <h1>{{doctor.name}}</h1>
+
+}
+</section> -->
+
