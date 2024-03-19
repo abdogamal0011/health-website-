@@ -2,6 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ListDoctor } from '../interface/list-doctor';
 import { Observable } from 'rxjs';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6eb406f3a3df5719882368b02d286fdf47652d16
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +14,7 @@ export class ListDoctorService {
 
    allDoctor = `https://ecommerce.routemisr.com/api/v1/products` ;
     reviewOfDoctor=`https://retoolapi.dev/SJTBhb/data`
+
 
   constructor( private http:HttpClient) { }
 
@@ -53,4 +58,6 @@ export class ListDoctorService {
   deleteData(id: number) {
     return this.http.delete(`${this.reviewOfDoctor}/${id}`);
   }
+
+
 }
