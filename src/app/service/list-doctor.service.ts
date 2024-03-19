@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { ListDoctor } from '../interface/list-doctor';
 import { Observable } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class ListDoctorService {
 
    allDoctor = `https://ecommerce.routemisr.com/api/v1/products` ;
+    reviewOfDoctor=`https://retoolapi.dev/SJTBhb/data`
 
 
   constructor( private http:HttpClient) { }
@@ -26,7 +26,33 @@ export class ListDoctorService {
   }
 
   pasination(pageNumber : number = 1){
-    return this.http.get(`https://ecommerce.routemisr.com/api/v1/products?page=${pageNumber}`)
+    return this.http.get(`${this.allDoctor}=${pageNumber}`)
+  }
+
+  profial(){
+    return this.http.get(`${this.allDoctor}/6428eb43dc1175abc65ca0b3`)
+  }
+  private apiUrl = 'https://retoolapi.dev/SJTBhb/data';
+
+
+  addRating(rating: any): Observable<any> {
+    return this.http.post(this.apiUrl, rating);
+  }
+
+  getRatings(): Observable<any> {
+    return this.http.get(this.apiUrl);
+  }
+
+  editRating(id: number, rating: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, rating);
+  }
+
+  deleteRating(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
+  deleteData(id: number) {
+    return this.http.delete(`${this.reviewOfDoctor}/${id}`);
   }
 
 

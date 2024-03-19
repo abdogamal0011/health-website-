@@ -6,7 +6,13 @@ import { LoginComponent } from './components/login/login.component';
 import { ListOfDoctorsComponent } from './components/list-of-doctors/list-of-doctors.component';
 import { Routes } from '@angular/router';
 import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
+<<<<<<< HEAD
+import { MessageComponent } from './components/message/message.component';
+import { ProfialComponent } from './components/profial/profial.component';
+
+=======
 import { TestComponent } from './test/test.component';
+>>>>>>> 6eb406f3a3df5719882368b02d286fdf47652d16
 
 export const routes: Routes = [
 
@@ -43,6 +49,18 @@ export const routes: Routes = [
       title : "details"
     } ,
     {
+      path:"profial/:id" ,
+      component:ProfialComponent ,
+      title : "details"
+    } ,
+
+
+    {
+      path:"messages" ,
+      component:MessageComponent ,
+      title : "message"
+    } ,
+    {
       path:"doctors/doctorDetails/:id" ,
       redirectTo:"doctorDetails/:id" ,
       pathMatch:"full"
@@ -54,5 +72,9 @@ export const routes: Routes = [
       title : 'test'
     }
 
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> 6eb406f3a3df5719882368b02d286fdf47652d16
 ];
