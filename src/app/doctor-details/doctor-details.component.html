@@ -154,28 +154,10 @@
       <h1 class="text-light px-3 text-center">Comments</h1>
     </div>
 
-    <!-- Comment Form -->
-    <!-- ratings.component.html -->
 
-    <form (submit)="addRating(data)">
-      <input type="text" name="rating" [(ngModel)]="data.rating">
-      <input type="text" [(ngModel)]="data.review" name="review">
-      <!-- <button type="submit">Add Rating</button> -->
-    </form>
-
-    <button (click)="getRatings()">Get Ratings</button>
-
-    <!-- <div *ngFor="let rating of ratings">
-      <p>{{ rating.value }} - {{ rating.comment }}</p>
-      <button (click)="editRating(rating.id, updatedRatingData)">Edit</button>
-      <button (click)="deleteRating(rating.id)">Delete</button>
-    </div> -->
-
-    <!-- Comment List -->
 
   </div>
 
-</section>
 
 
 
