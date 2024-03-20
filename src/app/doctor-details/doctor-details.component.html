@@ -9,25 +9,25 @@
 
       <div class="text px-md-5 pt-3">
         <div class="title d-flex align-items-center justify-content-between">
-          <h2>Dr : {{ doctor.title }}</h2>
+          <h2>Dr : {{ doctor.doctor.name }}</h2>
           <span class="available bg-primary">available</span>
         </div>
 
         <p class="description pt-lg-2">
           <span class="fw-bold">speciality </span>:
-          <span>{{ doctor.brand.name }}</span>
+          <span>{{ doctor.doctor.name }}</span>
         </p>
         <p class="description pt-lg-2">
-          <span class="fw-bold">Experience </span>:
-          <span>{{ doctor.description }}</span>
+          <span class="fw-bold">age: </span>:
+          <span>{{ doctor.doctor.age }}</span>
         </p>
         <p class="description pt-lg-2">
           <span class="fw-bold">Address </span>:
-          <span>المنيل : شارع المنيل الر��يسي - ميدان البا��ا </span>
+          <span>{{doctor.doctor.address}}</span>
         </p>
         <p class="description pt-lg-2">
           <span class="fw-bold">Feas </span>:
-          <span> {{ doctor.price }} <span class="fw-bold">Eg</span></span>
+          <span> {{ doctor.doctor.price }} <span class="fw-bold">Eg</span></span>
         </p>
 
         <div class="vote d-flex align-items-center justify-content-between">
@@ -60,76 +60,52 @@
     </div>
   </div>
 
-  <div class="mx-5 BookContainer bg-light mb-2">
-
-    <div class="bg-green">
-      <h1 class="text-light px-3 text-center">Book Now</h1>
-    </div>
-    <div class="d-flex justify-content-evenly">
-
-      <div>
-        <i class="fa-solid fa-coins"></i>
-        <span class="px-2">{{doctor.price}} Eg</span>
-      </div>
-      <div>
-        <i class="fa-solid fa-location-dot"></i>
-        <span class="px-2">BaniSuef-elryade</span>
-      </div>
-      <div>
-        <i class="fa-solid fa-hourglass-start"></i>
-        <span class="px-2">Waiting for : 8 min</span>
-      </div>
-    </div>
-    <hr>
-    <div class="imgClinic-container">
-      <img src="https://cdn-dr-images.vezeeta.com/Assets/Images/Entities/entd7e0d5aceda20d36/Facilities/misr-modern-clinics_20240101061913491.jpg" alt="" class="imgClinic">
-      عيادات مصر الحدي��ه
-    </div>
+  <div class="mx-5 BookContainer  mb-2">
     <button
     type="button"
     class="btn bg-green btn-book mt-2 "
     data-bs-toggle="modal"
     data-bs-target="#staticBackdrop"
   >
-    ا��جز الان
+    احجز الان
   </button>
-
-  <!-- Modal -->
-  <div
-    class="modal fade "
-    id="staticBackdrop"
-    data-bs-backdrop="static"
-    data-bs-keyboard="false"
-    tabindex="-1"
-    aria-labelledby="staticBackdropLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">
-            ا��خل بيانات الحجز
-          </h1>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">
-          <div class="d-flex flex-column">
-            <div class="inputDiv">
-              <i class="fa-solid fa-user"></i>
-              <input type="text" placeholder="Patient name" />
-            </div>
-            <div class="inputDiv">
-              <i class="fa-solid fa-phone"></i>
-              <input type="number" placeholder="phone number" />
-            </div>
-            <div class="inputDiv">
-              <i class="fa-solid fa-envelope"></i>
-              <input type="email" placeholder="Email" />
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">
+              ادخل بيانات الحجز
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="d-flex flex-column">
+              <div class="inputDiv">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" placeholder="Patient name" />
+              </div>
+              <div class="inputDiv">
+                <i class="fa-solid fa-phone"></i>
+                <input type="number" placeholder="phone number" />
+              </div>
+              <div class="inputDiv">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" placeholder="Email" />
+              </div>
             </div>
           </div>
           <div class="modal-footer">
@@ -155,28 +131,74 @@
     </div>
 
     <!-- Comment Form -->
-    <!-- ratings.component.html -->
+    <div class="p-3">
+      <form (ngSubmit)="submitForm()">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <h1>Add Comment</h1>
+            </div>
+            <div class="col-md-6">
+              <!-- Additional hidden inputs for patient_id and doctor_id -->
+              <input type="hidden" name="patient_id" [(ngModel)]="patientId">
+              <input type="hidden" name="doctor_id" [(ngModel)]="doctorId">
+              <!-- Additional textarea for text comment -->
+              <div class="mb-3">
+                <label for="textComment" class="form-label">Text Comment</label>
+                <textarea
+                  class="form-control"
+                  id="textComment"
+                  rows="3"
+                  [(ngModel)]="textComment"
+                  name="textComment"
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="rate" class="form-label">Rate</label>
+                <select
+                  class="form-select"
+                  id="rate"
+                  [(ngModel)]="rate"
+                  name="rate"
+                >
+                  <option value="0"> No rate</option>
+                  <option value="1"> 1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <!-- Button to add new comment -->
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Add New Comment
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
 
-    <form (submit)="addRating(data)">
-      <input type="text" name="rating" [(ngModel)]="data.rating">
-      <input type="text" [(ngModel)]="data.review" name="review">
-      <!-- <button type="submit">Add Rating</button> -->
-    </form>
+  </div>
 
-    <button (click)="getRatings()">Get Ratings</button>
+  <div class="mx-5 my-5  bg-light mb-5 row p-5" >
+    @for(comment of comments ; track comment.id ){
 
-    <!-- <div *ngFor="let rating of ratings">
-      <p>{{ rating.value }} - {{ rating.comment }}</p>
-      <button (click)="editRating(rating.id, updatedRatingData)">Edit</button>
-      <button (click)="deleteRating(rating.id)">Delete</button>
-    </div> -->
+      <div class="one-comment row m-2">
+        <div class="col-md-1 d-flext flex-column align-items-center justify-content-center text-center" >
+          <img width="100%" src="https://marketplace.canva.com/EAFqNrAJpQs/1/0/1600w/canva-neutral-pink-modern-circle-shape-linkedin-profile-picture-WAhofEY5L1U.jpg" class="patient-image" alt="">
+          <p>{{comment.patient.name}}</p>
+        </div>
 
-    <!-- Comment List -->
+        <div class="col-md-1" ></div>
+        <div class="col-md-8 comment-container " >
+          {{ comment.comment  }}
+        </div>
+      </div>
+
+
+    }
 
   </div>
 
 </section>
-
-
-
-

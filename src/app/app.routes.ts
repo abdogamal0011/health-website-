@@ -1,18 +1,15 @@
 import { ApointmentComponent } from './apointment/apointment.component';
 
 import { RegisterComponent } from './components/register/register.component';
-import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { ListOfDoctorsComponent } from './components/list-of-doctors/list-of-doctors.component';
 import { Routes } from '@angular/router';
 import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
-<<<<<<< HEAD
 import { MessageComponent } from './components/message/message.component';
 import { ProfialComponent } from './components/profial/profial.component';
-
-=======
 import { TestComponent } from './test/test.component';
->>>>>>> 6eb406f3a3df5719882368b02d286fdf47652d16
+import { ListOfDoctorsComponent } from './components/list-of-doctors/list-of-doctors.component';
+import { HomeComponent } from './components/home/home.component';
+
 
 export const routes: Routes = [
 
@@ -70,11 +67,9 @@ export const routes: Routes = [
       path:"**" ,
       component:TestComponent ,
       title : 'test'
-    }
+    },
 
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 6eb406f3a3df5719882368b02d286fdf47652d16
+
+
 ];
