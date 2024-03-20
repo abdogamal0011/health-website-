@@ -7,8 +7,8 @@ import { DoctorDetailsComponent } from './doctor-details/doctor-details.componen
 import { MessageComponent } from './components/message/message.component';
 import { ProfialComponent } from './components/profial/profial.component';
 import { TestComponent } from './test/test.component';
-import { ListOfDoctorsComponent } from './components/list-of-doctors/list-of-doctors.component';
 import { HomeComponent } from './components/home/home.component';
+import { ListOfDoctorsComponent } from './components/list-of-doctors/list-of-doctors.component';
 
 
 export const routes: Routes = [
@@ -68,8 +68,6 @@ export const routes: Routes = [
       component:TestComponent ,
       title : 'test'
     },
-
-
 
 
 ];

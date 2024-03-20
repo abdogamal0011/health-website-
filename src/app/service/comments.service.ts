@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class CommentsService {
 
   commentApi = 'http://127.0.0.1:8000/api/comments' ;
-  private authToken = 'Bearer 5|6X23gjhJbyuisC2IzmbLEe575t01ItK57KFPxzT4ab696b2e';
+  private authToken = 'Bearer 3|fKkHnKxbAQL2FSGHr8XwEnhv9qX8ucB4Zjstobkm712c4c4d';
 
   Header : any = {
     'Authorization': this.authToken ,
