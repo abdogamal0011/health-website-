@@ -27,16 +27,7 @@ export class ListOfDoctorsComponent {
   constructor(private listDoctors:ListDoctorService ,private _doctorApi:DoctorsApiService) {  }
 
   ngOnInit():void{
-    this.listDoctors.getAllDoctor().subscribe(
-      (AllDoctors)=>{ this.products = AllDoctors;
-        this.doctors = this.products.data;
-        this.pageSize = this.products.metadata.limit;
-        this.curentPage =  this.products.metadata.currentPage;
-        this.total =  this.products.results
-     },
-
-
-  );
+ 
        this._doctorApi.getAllDoctors().subscribe(data=> {this.doctors= data,console.log(this.doctors);
        })
 
