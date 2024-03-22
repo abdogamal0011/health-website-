@@ -11,4 +11,7 @@ export class PostsService {
   AllPosts(){
    return this.http.get('http://127.0.0.1:8000/api/posts')
   }
+  addPost(postData: any) {
+    return this.http.post('http://127.0.0.1:8000/api/posts', postData);
+  }
 }

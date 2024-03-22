@@ -82,7 +82,7 @@ export class RegisterComponent {
           Object.keys(control.errors).forEach((error) => {
             switch (error) {
               case 'required':
-                errorMessage += `${controlName} is required.\n`;
+                errorMessage +=` ${controlName} is required.\n`;
                 break;
               case 'is_admin':
                 errorMessage += `${controlName} is required.\n`;
@@ -91,10 +91,10 @@ export class RegisterComponent {
                 errorMessage += `${controlName} must be at least 6 characters long.\n`;
                 break;
               case 'email':
-                errorMessage += `${controlName} must be a valid email address.\n`;
+                errorMessage +=` ${controlName} must be a valid email address.\n`;
                 break;
               case 'pattern':
-                errorMessage += `${controlName} contains invalid characters.\n`;
+                errorMessage +=` ${controlName} contains invalid characters.\n`;
                 break;
               case 'min':
                 errorMessage += `${controlName} must be greater than 0.\n`;

@@ -18,6 +18,7 @@ import { ListOfDoctorsComponent } from './components/list-of-doctors/list-of-doc
 import { PatientProfileComponent } from './patient-profile/patient-profile.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { DashbordAdminComponent } from './components/dashbord-admin/dashbord-admin.component';
+import { AboutComponent } from './about/about.component';
 
 
 export const routes: Routes = [
@@ -32,6 +33,10 @@ export const routes: Routes = [
           path: "",
           component: HomeComponent ,
           title: "  Home Page "
+      },
+      {
+        path:'about' ,
+        component : AboutComponent ,
       },
 
       {
@@ -109,6 +114,7 @@ export const routes: Routes = [
           path:'home' ,
           component : OverviewComponent ,
         },
+        
         {
 
           path:'docAppointment' ,
