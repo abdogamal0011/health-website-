@@ -7,7 +7,6 @@ import { ListOfDoctorsComponent } from './components/list-of-doctors/list-of-doc
 import { CommonModule } from '@angular/common';
 import { ProfialComponent } from './components/profial/profial.component';
 import { AdminComponent } from "./dashboard/admin/admin.component";
-import { HomeComponent } from './components/home/home.component';
 
 
 @Component({

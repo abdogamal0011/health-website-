@@ -12,8 +12,6 @@ import { OverviewComponent } from './dashboard/overview/overview.component';
 import { AppointmentApiService } from './service/appointment-api.service';
 import { DashAppointmentComponent } from './dashboard/dash-appointment/dash-appointment.component';
 import { AddAppointmentComponent } from './add-appointment/add-appointment.component';
-import { ListOfDoctorsComponent } from './components/list-of-doctors/list-of-doctors.component';
-import { HomeComponent } from './components/home/home.component';
 
 
 export const routes: Routes = [
