@@ -1,7 +1,7 @@
 <section>
   <div class="container1 d-flex flex-column">
     <div class="img">
-      <img [src]="doctor.imageCover"  alt="" />
+      <img [src]="doctor?.imageCover"  alt="" />
     </div>
 
     <div class="details ps-md-5 d-flex align-items-start">
@@ -15,7 +15,7 @@
 
         <p class="description pt-lg-2">
           <span class="fw-bold">speciality </span>:
-          <span>{{ doctor.doctor.name }}</span>
+          <span>{{ doctor.doctor.department.name }}</span>
         </p>
         <p class="description pt-lg-2">
           <span class="fw-bold">age: </span>:
@@ -27,48 +27,38 @@
         </p>
         <p class="description pt-lg-2">
           <span class="fw-bold">Feas </span>:
-          <span> {{ doctor.doctor.price }} <span class="fw-bold">Eg</span></span>
+          <span> 200 <span class="fw-bold">Eg</span></span>
         </p>
 
         <div class="vote d-flex align-items-center justify-content-between">
-          <a [href]="doctor.homepage" target="_blank" class="homepage"
+          <a [href]="doctor?.homepage" target="_blank" class="homepage"
             >Location</a
           >
-          @if (doctor.ratingsAverage >10) {
-          <span>
-            <i class="fa-solid fa-star text-warning"></i>
-            <i class="fa-solid fa-star text-warning"></i>
-            <i class="fa-solid fa-star text-warning"></i>
-            <i class="fa-solid fa-star text-warning"></i>
-            <i class="fa-solid fa-star text-warning"></i>
-          </span>
-          } @if(doctor.ratingsAverage > 0 && doctor.ratingsAverage <= 7) {
-          <span>
-            <i class="fa-solid fa-star text-warning"></i>
-            <i class="fa-solid fa-star text-warning"></i>
-          </span>
-          } @if (doctor.ratingsAverage >= 8 && doctor.ratingsAverage <= 10) {
-          <span>
-            <i class="fa-solid fa-star text-warning"></i>
-            <i class="fa-solid fa-star text-warning"></i>
-            <i class="fa-solid fa-star text-warning"></i>
-            <i class="fa-solid fa-star text-warning"></i>
-          </span>
-          }
         </div>
       </div>
     </div>
   </div>
 
   <div class="mx-5 BookContainer  mb-2">
-    <button
-    type="button"
-    class="btn bg-green btn-book mt-2 "
-    data-bs-toggle="modal"
-    data-bs-target="#staticBackdrop"
-  >
-    احجز الان
-  </button>
+    @if(isAuth){
+      <button
+      type="button"
+      class="btn bg-green btn-book mt-2 "
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+    >
+      احجز الان
+    </button>
+    }@else {
+      <button
+      type="button"
+      class="btn bg-green btn-book mt-2 "
+      [routerLink]="['/home/login']"
+    >
+      احجز الان
+    </button>
+    }
+
     <!-- Modal -->
     <div
       class="modal fade"
@@ -150,8 +140,7 @@
                 <div class="mb-3">
                   <label for="doctorId" class="form-label">Doctor ID</label>
                   <select class="form-control" id="doctorId" formControlName="doctor_id">
-                    <option [value]="doctor.doctor.id">{{ doctor.doctor.name }}</option>
-
+                    <option [value]="doctor?.doctor.id">{{ doctor?.doctor.name }}</option>
                   </select>
                 </div>
 
@@ -217,7 +206,7 @@
             </div>
             <div class="col-md-6">
               <!-- Additional hidden inputs for patient_id and doctor_id -->
-              <input type="hidden" name="patient_id" [(ngModel)]="patientId">
+              <input type="hidden" name="patient_id" [(ngModel)]="userId">
               <input type="hidden" name="doctor_id" [(ngModel)]="doctorId">
               <!-- Additional textarea for text comment -->
               <div class="mb-3">
@@ -258,24 +247,27 @@
 
   </div>
 
-  <div class="mx-5 my-5  bg-light mb-5 row p-5" >
-    @for(comment of comments ; track comment.id ){
 
-      <div class="one-comment row m-2">
-        <div class="col-md-1 d-flext flex-column align-items-center justify-content-center text-center" >
-          <img width="100%" src="https://marketplace.canva.com/EAFqNrAJpQs/1/0/1600w/canva-neutral-pink-modern-circle-shape-linkedin-profile-picture-WAhofEY5L1U.jpg" class="patient-image" alt="">
-          <p>{{comment.patient.name}}</p>
+    <div class="mx-5 my-5  bg-light mb-5 row p-5" >
+      @for(comment of comments ; track comment.id ){
+
+        <div class="one-comment row m-2">
+          <div class="col-md-1 d-flext flex-column align-items-center justify-content-center text-center" >
+            <img width="100%" src="https://marketplace.canva.com/EAFqNrAJpQs/1/0/1600w/canva-neutral-pink-modern-circle-shape-linkedin-profile-picture-WAhofEY5L1U.jpg" class="patient-image" alt="">
+            <p>{{comment.user.name}}</p>
+          </div>
+
+          <div class="col-md-1" ></div>
+          <div class="col-md-8 comment-container " >
+            {{ comment.comment  }}
+          </div>
         </div>
 
-        <div class="col-md-1" ></div>
-        <div class="col-md-8 comment-container " >
-          {{ comment.comment  }}
-        </div>
-      </div>
+
+      }
+
+    </div>
 
 
-    }
-
-  </div>
 
 </section>

@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UsersService } from './users.service';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,41 +10,58 @@ import { Observable } from 'rxjs';
 export class CommentsService {
 
   commentApi = 'http://127.0.0.1:8000/api/comments' ;
-  private authToken = 'Bearer 3|fKkHnKxbAQL2FSGHr8XwEnhv9qX8ucB4Zjstobkm712c4c4d';
+ 
 
-  Header : any = {
-    'Authorization': this.authToken ,
-    'Content-Type': 'application/json'
-  };
+  constructor(private http: HttpClient , private localApi : LocalStorageService) {
 
-  constructor(private http:HttpClient) { }
+  }
+
+
+
+
 
   getAllcomments(doctorId: number): Observable<any> {
     const url = `${this.commentApi}?doctor_id=${doctorId}`;
-    return this.http.get(url, { headers: this.Header });
+    return this.http.get(url);
   }
 
 
 
   addComment(commentData : any): Observable<any>{
+    const    authToken : any = localStorage.getItem('user');
+    const   Api : any = JSON.parse(authToken);
+    const  token = Api.token
     return this.http.post(this.commentApi, commentData, {
-      headers: this.Header
+      headers: {
+      'Authorization': `Bearer ${token}` ,
+      'Content-Type': 'application/json'
+    }
     });
   }
 
 
   UpdataComment(id: number, updateComment: any): Observable<any> {
+    const    authToken : any = localStorage.getItem('user');
+    const   Api : any = JSON.parse(authToken);
+    const  token = Api.token
     const url = `${this.commentApi}/${id}`;
-    return this.http.put(url, updateComment, { headers : this.Header });
+    return this.http.put(url, updateComment, { headers : {
+      'Authorization': `Bearer ${token}` ,
+      'Content-Type': 'application/json'
+    } });
   }
 
   deleteComment(id: number): Observable<any> {
+    const    authToken : any = localStorage.getItem('user');
+    const   Api : any = JSON.parse(authToken);
+    const  token = Api.token
     const url = `${this.commentApi}/${id}`;
-    const headers = new HttpHeaders({
-      'Authorization': this.authToken
-    });
 
-    return this.http.delete(url, { headers });
+
+    return this.http.delete(url, { headers : {
+      'Authorization': `Bearer ${token}` ,
+      'Content-Type': 'application/json'
+    } });
   }
 
 

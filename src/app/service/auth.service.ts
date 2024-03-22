@@ -16,4 +16,8 @@ export class AuthService {
   login(userData:object){
     return this.http.post(`http://localhost:8000/api/login`,userData);
   }
+
+  isLogin(){
+    
+  }
 }

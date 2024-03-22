@@ -12,8 +12,9 @@ import { AdminComponent } from './dashboard/admin/admin.component';
 import { LayoutComponent } from './layout/layout.component';
 import { OverviewComponent } from './dashboard/overview/overview.component';
 import { AppointmentApiService } from './service/appointment-api.service';
-import { DashAppointmentComponent } from './dashboard/dash-appointment/dash-appointment.component';
 import { AddAppointmentComponent } from './add-appointment/add-appointment.component';
+import { FreetimeComponent } from './dashboard/free-time/free-time.component';
+import { DashAppointmentComponent } from './dashboard/dash-appointment/dash-appointment.component';
 
 
 export const routes: Routes = [
@@ -110,6 +111,12 @@ export const routes: Routes = [
 
           path:'addAppointment' ,
           component : AddAppointmentComponent ,
+
+        } ,
+        {
+
+          path:'freeTimes' ,
+          component : FreetimeComponent ,
 
         } ,
         {
