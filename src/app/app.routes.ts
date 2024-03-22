@@ -18,6 +18,7 @@ import { ListOfDoctorsComponent } from './components/list-of-doctors/list-of-doc
 import { PatientProfileComponent } from './patient-profile/patient-profile.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { DashbordAdminComponent } from './components/dashbord-admin/dashbord-admin.component';
+import { PatienttComponent } from './patientt/patientt.component';
 
 
 export const routes: Routes = [

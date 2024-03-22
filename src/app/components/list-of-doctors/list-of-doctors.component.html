@@ -34,7 +34,7 @@
 
         <div class="col-md-4" >
           <div class="card doctor-list text-center"> <div class="imageDoctor d-flex justify-content-center align-items-center">
-              <img [src]="doctor.imageCover" class="rounded-circle mx-auto d-block" alt="Doctor Image"> </div>
+            <img src="http://127.0.0.1:8000/{{doctor.image}}" class="w-25 rounded-circle" [alt]="doctor.title"></div>
             <div class="card-body">
               <h5>{{ doctor.name | searchDoctor : 1 }}</h5>
               <p>{{ doctor.specialty | searchDoctor : 1 }}</p>
