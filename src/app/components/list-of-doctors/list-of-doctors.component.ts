@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ListDoctorService } from '../../service/list-doctor.service';
-import {ListDoctor} from '../../interface/list-doctor'
+import {ListDoctor} from '../../interface/list-doctor';
 import { SearchDoctorPipe } from '../../pipe/search-doctor.pipe';
 import { SearchHomePipe } from '../../pipe/search-home.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -19,15 +19,15 @@ import { subscribe } from 'diagnostics_channel';
 export class ListOfDoctorsComponent {
   inputSearch : string= ''
 
-  products : any ;
+  products : []=[] ;
   doctors: any;
   pageSize:number = 0; //limit
   curentPage:number = 1;
   total :number =0
-  constructor(private listDoctors:ListDoctorService ,private _doctorApi:DoctorsApiService) {  }
+  constructor(private _doctorApi:DoctorsApiService) {  }
 
   ngOnInit():void{
- 
+
        this._doctorApi.getAllDoctors().subscribe(data=> {this.doctors= data,console.log(this.doctors);
        })
 
@@ -36,23 +36,23 @@ export class ListOfDoctorsComponent {
 
   }
 
-  pageChanged(event:any):void{
-    this.listDoctors.pasination(event).subscribe({
-      next:(AllDoctors)=>{ this.products = AllDoctors;
-         this.doctors = this.products.data;
-         this.pageSize = this.products.metadata.limit;
-         this.curentPage =  this.products.metadata.currentPage;
-         this.total =  this.products.results
-      },
+  // pageChanged(event:any):void{
+  //   this._doctorApi.pasination(event).subscribe({
+  //     next:(res)=>{ this.products = res;
+  //        this.doctors = this.products.data;
+  //        this.pageSize = this.products.metadata.limit;
+  //        this.curentPage =  this.products.metadata.currentPage;
+  //        this.total =  this.products.results
+  //     },
 
 
-   });
+  //  });
 
 
 
 
 
-  }
+  // }
 
 
 

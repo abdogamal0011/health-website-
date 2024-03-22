@@ -70,7 +70,7 @@ export class DoctorsApiService {
     const   Api : any = JSON.parse(authToken);
     const  token = Api.token
     const url = `${this.doctorApi}/${id}`;
-    
+
 
     return this.http.delete(url, { headers : {
       'Authorization': `Bearer ${token}` ,

@@ -94,7 +94,7 @@ export class DashAppointmentComponent {
         // Replace placeholders with actual values
         const emailParams = {
           from_name: "Doctor",
-          to_name: "Ahmed", 
+          to_name: "Ahmed",
           from_email: "ahmedmanaour990@gmail.com", // Replace with the doctor's email
           to_email: "ahmedmanaour990@gmail.com", // Use the provided patient's email address
           subject: "Appointment Confirmation",

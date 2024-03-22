@@ -1,8 +1,6 @@
 import { ApointmentComponent } from './apointment/apointment.component';
 import { RegisterComponent } from './components/register/register.component';
-import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { ListOfDoctorsComponent } from './components/list-of-doctors/list-of-doctors.component';
 import { Routes } from '@angular/router';
 import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
 import { MessageComponent } from './components/message/message.component';
@@ -15,6 +13,11 @@ import { AppointmentApiService } from './service/appointment-api.service';
 import { AddAppointmentComponent } from './add-appointment/add-appointment.component';
 import { FreetimeComponent } from './dashboard/free-time/free-time.component';
 import { DashAppointmentComponent } from './dashboard/dash-appointment/dash-appointment.component';
+import { HomeComponent } from './components/home/home.component';
+import { ListOfDoctorsComponent } from './components/list-of-doctors/list-of-doctors.component';
+import { PatientProfileComponent } from './patient-profile/patient-profile.component';
+import { PostsComponent } from './components/posts/posts.component';
+import { DashbordAdminComponent } from './components/dashbord-admin/dashbord-admin.component';
 
 
 export const routes: Routes = [
@@ -51,6 +54,11 @@ export const routes: Routes = [
           path: "doctors",
           component: ListOfDoctorsComponent ,
           title: "doctors Page "
+      } ,
+      {
+          path: "pf",
+          component: PatientProfileComponent,
+          title: "Profile "
       } ,
       {
         path:"doctorDetails/:id" ,
@@ -111,6 +119,18 @@ export const routes: Routes = [
 
           path:'addAppointment' ,
           component : AddAppointmentComponent ,
+
+        } ,
+        {
+
+          path:'posts' ,
+          component : PostsComponent ,
+
+        } ,
+        {
+
+          path:'dashadmin' ,
+          component : DashbordAdminComponent ,
 
         } ,
         {
