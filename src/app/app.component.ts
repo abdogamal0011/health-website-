@@ -9,6 +9,7 @@ import { ProfialComponent } from './components/profial/profial.component';
 import { AdminComponent } from "./dashboard/admin/admin.component";
 import { LocalStorageService } from './service/local-storage.service';
 import { UsersService } from './service/users.service';
+import { HomeComponent } from './components/home/home.component';
 
 
 @Component({
