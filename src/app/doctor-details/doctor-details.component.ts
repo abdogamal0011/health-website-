@@ -61,17 +61,21 @@ export class DoctorDetailsComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(10),
+          Validators.minLength(6),
           Validators.maxLength(200),
         ],
       ],
       price: ['', [Validators.required]],
       patient_id: ['', [Validators.required]],
       doctor_id: ['', [Validators.required]],
+      date: ['', [Validators.required]],
     });
 
 
   }
+
+
+  appiontmentDate:any ='';
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params['id'];
@@ -116,14 +120,16 @@ export class DoctorDetailsComponent implements OnInit {
 
 
     if (this.appForm.valid) {
-      const formData = {
-        note: this.appForm.get('note')?.value,
+      const formData ={
+        note:this.appForm.get('note')?.value,
         description: this.appForm.get('description')?.value,
         price: this.appForm.get('price')?.value,
-        doctor_id: this.doctorId,
+        doctor_id:this.appForm.get('doctor_id')?.value ,
         patient_id: this.appForm.get('patient_id')?.value,
+        date: this.appForm.get('date')?.value,
         status : 'pending' ,
       };
+      console.log(formData);
 
 
       this.appointmentApiService.addAppointment(formData).subscribe(
@@ -141,7 +147,10 @@ export class DoctorDetailsComponent implements OnInit {
   }
 
 
-
+  getdate(date: string){
+    this.appiontmentDate = date;
+    return this.appiontmentDate;
+  }
 
 
 

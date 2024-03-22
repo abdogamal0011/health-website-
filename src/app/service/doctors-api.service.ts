@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class DoctorsApiService {
   private doctorApi = 'http://127.0.0.1:8000/api/doctors';
-  private authToken = 'Bearer 4|YNP3YYmDIPVjmsKsKxNEPAspUSEmqTPgWLHSPy5x5a904eb3';
+  private authToken = 'Bearer 2|LWqqQma0GXrYYYx37Irp7vqZtLT36NS0P84eGJkfbb9e3d4';
 
   Header : any = {
     'Authorization': this.authToken ,

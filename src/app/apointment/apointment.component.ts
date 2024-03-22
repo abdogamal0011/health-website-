@@ -45,7 +45,7 @@ export class ApointmentComponent {
   ngOnInit(): void {
     this.doctorApi.getAllDoctors().subscribe(
       (data) => {
-        this.doctors = data.doctors;
+        this.doctors = data.doctors.docotor;
         console.log(this.doctors);
       },
       (error) => {

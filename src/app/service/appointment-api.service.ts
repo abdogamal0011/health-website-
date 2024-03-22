@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class AppointmentApiService {
 
   private appointmentUrl = 'http://127.0.0.1:8000/api/appointments';
-  private authToken = 'Bearer 1|OmIzzmhSvJ7KEp2Ha3S7QUV8IBOvPd18YjuBxn793d162d82';
+  private authToken = 'Bearer 3|q1zDALlgUK2CKAIJlqARbFzeclGylnLvINQQxZ6I7af32d45';
 
   Header : any = {
     'Authorization': this.authToken ,
@@ -29,7 +29,7 @@ export class AppointmentApiService {
   }
 
 
-  addAppointment(appointmentData : any): Observable<any>{
+  addAppointment(appointmentData : object): Observable<any>{
     return this.http.post(this.appointmentUrl, appointmentData, {
       headers: this.Header
     });
