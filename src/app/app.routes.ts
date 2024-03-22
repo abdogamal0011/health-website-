@@ -3,7 +3,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ListOfDoctorsComponent } from './components/list-of-doctors/list-of-doctors.component';
-import { Routes } from '@angular/router';
 import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
 import { MessageComponent } from './components/message/message.component';
 import { ProfialComponent } from './components/profial/profial.component';
@@ -14,6 +13,9 @@ import { OverviewComponent } from './dashboard/overview/overview.component';
 import { AppointmentApiService } from './service/appointment-api.service';
 import { DashAppointmentComponent } from './dashboard/dash-appointment/dash-appointment.component';
 import { AddAppointmentComponent } from './add-appointment/add-appointment.component';
+import { Routes } from '@angular/router';
+import { PatienttComponent } from './patientt/patientt.component';
+
 
 
 export const routes: Routes = [
@@ -35,6 +37,11 @@ export const routes: Routes = [
           component: ApointmentComponent ,
           title: "  apointment  Page "
       },
+      {
+        path: "patient",
+        component: PatienttComponent ,
+        title: "  patient  Page "
+    },
 
       {
           path: "register",
