@@ -35,7 +35,7 @@ export class LoginComponent {
         if(this.data.message === "Successfully"){
           this.isLoading=false;
           this.LocalStorageApi.setData('user' , res)
-          this.Router.navigate(['home']);
+          this.Router.navigate(['home/pf']);
         }
        },
        (err)=>{this.error = err.error.message;
