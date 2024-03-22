@@ -19,6 +19,7 @@ import { PatientProfileComponent } from './patient-profile/patient-profile.compo
 import { PostsComponent } from './components/posts/posts.component';
 import { DashbordAdminComponent } from './components/dashbord-admin/dashbord-admin.component';
 import { AboutComponent } from './about/about.component';
+import { PatienttComponent } from './patientt/patientt.component';
 
 
 export const routes: Routes = [
@@ -44,6 +45,11 @@ export const routes: Routes = [
           component: ApointmentComponent ,
           title: "  apointment  Page "
       },
+      {
+        path: "patient",
+        component: PatienttComponent ,
+        title: "  patient  Page "
+    },
 
       {
           path: "register",
@@ -152,12 +158,7 @@ export const routes: Routes = [
       ]
     } ,
 
-    {
-      path : '**' ,
-      redirectTo :'admin' ,
-      pathMatch:'full'
-    }
-
+  
 
 
 

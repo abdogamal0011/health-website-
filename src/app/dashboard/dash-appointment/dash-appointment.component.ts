@@ -29,8 +29,7 @@
 
     ngOnInit(): void {
 
-      this.appointmentApi.getDocAppointment(this.doctorId).subscribe((data) => { this.appointments = data  ; console.log(this.appointments);
-      })
+  this.showAll()
 
     }
 
@@ -53,15 +52,15 @@
 
     }
 
-    updateAppointment(appointment: any, status: any): void {
-      const updatedData = {
-          doctor_id: this.doctorId,
-          patient_id: appointment.patient.id,
-          date: appointment.date,
-          price: appointment.price,
-          description: appointment.description,
-          status: status,
-      };
+  updateAppointment(appointment: any, status: any): void {
+    const updatedData = {
+        doctor_id: this.doctorId,
+        patient_id: appointment.patient.id,
+        date: appointment.date,
+        price: appointment.price,
+        description: appointment.description,
+        status: status,
+    };
 
       console.log("Updating appointment with data:", updatedData);
 

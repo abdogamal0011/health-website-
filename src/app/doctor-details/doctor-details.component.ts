@@ -115,7 +115,12 @@ export class DoctorDetailsComponent implements OnInit {
   }
 
 
-
+  getAllComments(){
+    this.commentApi.getAllcomments(this.id).subscribe((data) => {
+      this.comments = data.data;
+      console.log("comment", data.data);
+    });
+  }
 
 
 
