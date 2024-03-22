@@ -10,12 +10,16 @@ import { AdminComponent } from './dashboard/admin/admin.component';
 import { LayoutComponent } from './layout/layout.component';
 import { OverviewComponent } from './dashboard/overview/overview.component';
 import { AppointmentApiService } from './service/appointment-api.service';
-import { DashAppointmentComponent } from './dashboard/dash-appointment/dash-appointment.component';
 import { AddAppointmentComponent } from './add-appointment/add-appointment.component';
+import { FreetimeComponent } from './dashboard/free-time/free-time.component';
+import { DashAppointmentComponent } from './dashboard/dash-appointment/dash-appointment.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListOfDoctorsComponent } from './components/list-of-doctors/list-of-doctors.component';
-import { DashbordAdminComponent } from './components/dashbord-admin/dashbord-admin.component';
+import { PatientProfileComponent } from './patient-profile/patient-profile.component';
 import { PostsComponent } from './components/posts/posts.component';
+import { DashbordAdminComponent } from './components/dashbord-admin/dashbord-admin.component';
+import { AboutComponent } from './about/about.component';
+import { PatienttComponent } from './patientt/patientt.component';
 
 
 export const routes: Routes = [
@@ -31,12 +35,21 @@ export const routes: Routes = [
           component: HomeComponent ,
           title: "  Home Page "
       },
+      {
+        path:'about' ,
+        component : AboutComponent ,
+      },
 
       {
           path: "ap",
           component: ApointmentComponent ,
           title: "  apointment  Page "
       },
+      {
+        path: "patient",
+        component: PatienttComponent ,
+        title: "  patient  Page "
+    },
 
       {
           path: "register",
@@ -52,6 +65,11 @@ export const routes: Routes = [
           path: "doctors",
           component: ListOfDoctorsComponent ,
           title: "doctors Page "
+      } ,
+      {
+          path: "pf",
+          component: PatientProfileComponent,
+          title: "Profile "
       } ,
       {
         path:"doctorDetails/:id" ,
@@ -102,6 +120,7 @@ export const routes: Routes = [
           path:'home' ,
           component : OverviewComponent ,
         },
+
         {
 
           path:'docAppointment' ,
@@ -116,14 +135,20 @@ export const routes: Routes = [
         } ,
         {
 
-          path:'alluser' ,
+          path:'posts' ,
+          component : PostsComponent ,
+
+        } ,
+        {
+
+          path:'dashadmin' ,
           component : DashbordAdminComponent ,
 
         } ,
         {
 
-          path:'posts' ,
-          component : PostsComponent ,
+          path:'freeTimes' ,
+          component : FreetimeComponent ,
 
         } ,
         {
@@ -133,11 +158,6 @@ export const routes: Routes = [
       ]
     } ,
 
-    {
-      path : '**' ,
-      redirectTo :'admin' ,
-      pathMatch:'full'
-    }
 
 
 

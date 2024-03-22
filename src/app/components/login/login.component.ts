@@ -1,3 +1,4 @@
+import { LocalStorageService } from './../../service/local-storage.service';
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
@@ -17,7 +18,7 @@ export class LoginComponent {
   data:any;
   error:string = '';
   isLoading:boolean = false;
-  constructor(private Auth:AuthService , private Router:Router) {}
+  constructor(private Auth:AuthService , private Router:Router , private LocalStorageApi : LocalStorageService ) {}
 
   loginForm: FormGroup = new FormGroup({
       email:new FormControl('' ,[ Validators.required , Validators.email]),
@@ -32,15 +33,13 @@ export class LoginComponent {
       this.Auth.login(userData).subscribe(
        (res)=>{ this.data = res
         if(this.data.message === "Successfully"){
-          this.Router.navigate(['']);
           this.isLoading=false;
+          this.LocalStorageApi.setData('user' , res)
+          this.Router.navigate(['home/pf']);
         }
-
        },
        (err)=>{this.error = err.error.message;
        this.isLoading=false;},
-
-
       );
     }
   }
