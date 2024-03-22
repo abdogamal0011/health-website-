@@ -5,16 +5,15 @@ import { Routes } from '@angular/router';
 import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
 import { MessageComponent } from './components/message/message.component';
 import { ProfialComponent } from './components/profial/profial.component';
+import { TestComponent } from './test/test.component';
 import { AdminComponent } from './dashboard/admin/admin.component';
 import { LayoutComponent } from './layout/layout.component';
 import { OverviewComponent } from './dashboard/overview/overview.component';
+import { AppointmentApiService } from './service/appointment-api.service';
 import { DashAppointmentComponent } from './dashboard/dash-appointment/dash-appointment.component';
 import { AddAppointmentComponent } from './add-appointment/add-appointment.component';
-import { HomeComponent } from './components/home/home.component';
 import { ListOfDoctorsComponent } from './components/list-of-doctors/list-of-doctors.component';
-import { DashbordAdminComponent } from './components/dashbord-admin/dashbord-admin.component';
-import { UpdateUserComponent } from './components/update-user/update-user.component';
-import { PostsComponent } from './components/posts/posts.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 export const routes: Routes = [
@@ -113,25 +112,6 @@ export const routes: Routes = [
           component : AddAppointmentComponent ,
 
         } ,
-        {
-
-          path:'dashbord-Admin' ,
-          component : DashbordAdminComponent ,
-
-        } ,
-        {
-
-          path:'update/:id' ,
-          component : UpdateUserComponent ,
-
-        } ,
-        {
-
-          path:'posts' ,
-          component : PostsComponent ,
-
-        } ,
-
         {
           path : '**' ,
           redirectTo : 'home'
