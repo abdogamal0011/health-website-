@@ -15,6 +15,8 @@ import { AddAppointmentComponent } from './add-appointment/add-appointment.compo
 import { HomeComponent } from './components/home/home.component';
 import { ListOfDoctorsComponent } from './components/list-of-doctors/list-of-doctors.component';
 import { PatientProfileComponent } from './patient-profile/patient-profile.component';
+import { PostsComponent } from './components/posts/posts.component';
+import { DashbordAdminComponent } from './components/dashbord-admin/dashbord-admin.component';
 
 
 export const routes: Routes = [
@@ -116,6 +118,18 @@ export const routes: Routes = [
 
           path:'addAppointment' ,
           component : AddAppointmentComponent ,
+
+        } ,
+        {
+
+          path:'posts' ,
+          component : PostsComponent ,
+
+        } ,
+        {
+
+          path:'dashadmin' ,
+          component : DashbordAdminComponent ,
 
         } ,
         {
