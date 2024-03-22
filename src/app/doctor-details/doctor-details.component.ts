@@ -1,13 +1,16 @@
 import { CommentsService } from './../service/comments.service';
 import { DoctorsApiService } from './../service/doctors-api.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ListDoctorService } from '../service/list-doctor.service';
 import { ApiService } from '../service/api.service';
 import { FormBuilder, FormControl, FormGroup, FormsModule, NgModel, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule, formatDate } from '@angular/common';
 import { ApointmentComponent } from '../apointment/apointment.component';
 import { AppointmentApiService } from '../service/appointment-api.service';
+import { LocalStorageService } from '../service/local-storage.service';
+import { routes } from '../app.routes';
+import { Router } from '@angular/router';
 
 // Define the Comment interface
 interface Comment {
@@ -25,11 +28,13 @@ interface Comment {
   imports : [
     CommonModule ,
     FormsModule ,
-    ReactiveFormsModule
+    ReactiveFormsModule ,
+    RouterLink
 
   ]
 })
 export class DoctorDetailsComponent implements OnInit {
+
 
   textComment :string = '' ;
   rate : any ;
@@ -38,10 +43,13 @@ export class DoctorDetailsComponent implements OnInit {
   editedText: string = '';
   hoveredRate: number = 0;
   comments : any[] | undefined ;
-  patientId = 1 ;
-  doctorId = 0 ;
+  userId :any = 1 ;
+  doctorId :any  = 1 ;
   appForm: FormGroup;
-  doctors: any[] = [];
+  doctors:  any = {doctors:[]};
+  isAuth : boolean = false  ;
+  id : number = 0;
+  ;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -50,9 +58,10 @@ export class DoctorDetailsComponent implements OnInit {
     private  doctorsApiService:DoctorsApiService ,
     private commentApi : CommentsService ,
     private fb: FormBuilder,
-
+    private _route:Router ,
     private appointmentApiService: AppointmentApiService,
-    private doctorApi: DoctorsApiService
+    private doctorApi: DoctorsApiService ,
+    private LocalStorageApi : LocalStorageService ,
 
   ) {
     this.appForm = this.fb.group({
@@ -61,52 +70,81 @@ export class DoctorDetailsComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(10),
+          Validators.minLength(6),
           Validators.maxLength(200),
         ],
       ],
       price: ['', [Validators.required]],
       patient_id: ['', [Validators.required]],
       doctor_id: ['', [Validators.required]],
+      date: ['', [Validators.required]],
     });
 
 
   }
 
-  ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.params['id'];
-    this.doctorId = id ;
-    this.doctorsApiService.getOneDoctors(id).subscribe((data)=>{this.doctor = data , console.log(this.doctor)})
-    this.commentApi.getAllcomments(id).subscribe(  (data)=>{ this.comments = data.data
-      console.log( "comment" , data.data );
-    })
 
+  appiontmentDate:any ='';
+
+  ngOnInit(): void {
+
+    const id = this.activatedRoute.snapshot.params['id']
+
+    this.doctorId = id;
+
+    this.doctorsApiService.getOneDoctors(id).subscribe((data) => {
+      this.doctor = data;
+      console.log("test" , this.doctor);
+    });
+
+      const Auth = this.LocalStorageApi.getData('user');
+
+      this.isAuth = !!Auth;
+
+      console.log("lastsadjasjk" , this.isAuth);
+
+      if (Auth) {
+        this.userId = Auth.id;
+      }
+
+      this.commentApi.getAllcomments(id).subscribe((data) => {
+        this.comments = data.data;
+        console.log("comment", data.data);
+      });
 
   }
+
 
 
 
 
 
   submitForm() {
-    const commentData = {
-      comment: this.textComment,
-      rating: this.rate,
-      patient_id: this.patientId,
-      doctor_id: this.doctorId
-    };
+    if (this.isAuth) {
+
+      const commentData = {
+        comment: this.textComment,
+        rating: this.rate,
+        user_id:  this.userId ,
+        doctor_id: this.doctorId ,
+      };
+
+      console.log('commentData' , commentData );
 
 
-    this.commentApi.addComment(commentData).subscribe(
-      (response) => {
-        console.log('Comment added successfully:', response);
-        this.textComment = '';
-        this.rate = 0;
-      },
-      (error) => {
-        console.error('Error adding comment:', error);
-      }
-    );
+      this.commentApi.addComment(commentData).subscribe(
+        (response) => {
+          console.log('Comment added successfully:', response);
+          this.textComment = '';
+          this.rate = 0;
+        },
+        (error) => {
+          console.error('Error adding comment:', error);
+        }
+      );
+    } else {
+      this._route.navigate(['/home/login']);
+    }
   }
 
 
@@ -116,14 +154,16 @@ export class DoctorDetailsComponent implements OnInit {
 
 
     if (this.appForm.valid) {
-      const formData = {
-        note: this.appForm.get('note')?.value,
+      const formData ={
+        note:this.appForm.get('note')?.value,
         description: this.appForm.get('description')?.value,
         price: this.appForm.get('price')?.value,
-        doctor_id: this.doctorId,
+        doctor_id:this.appForm.get('doctor_id')?.value ,
         patient_id: this.appForm.get('patient_id')?.value,
+        date: this.appForm.get('date')?.value,
         status : 'pending' ,
       };
+      console.log(formData);
 
 
       this.appointmentApiService.addAppointment(formData).subscribe(
@@ -141,7 +181,10 @@ export class DoctorDetailsComponent implements OnInit {
   }
 
 
-
+  getdate(date: string){
+    this.appiontmentDate = date;
+    return this.appiontmentDate;
+  }
 
 
 

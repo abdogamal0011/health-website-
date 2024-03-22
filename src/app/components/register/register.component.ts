@@ -82,10 +82,10 @@ export class RegisterComponent {
           Object.keys(control.errors).forEach((error) => {
             switch (error) {
               case 'required':
-                errorMessage +=` ${controlName} is required.\n`;
+                errorMessage += `${controlName} is required.\n`;
                 break;
               case 'is_admin':
-                errorMessage +=` ${controlName} is required.\n`;
+                errorMessage += `${controlName} is required.\n`;
                 break;
               case 'minlength':
                 errorMessage += `${controlName} must be at least 6 characters long.\n`;
@@ -94,7 +94,7 @@ export class RegisterComponent {
                 errorMessage += `${controlName} must be a valid email address.\n`;
                 break;
               case 'pattern':
-                errorMessage +=` ${controlName} contains invalid characters.\n`;
+                errorMessage += `${controlName} contains invalid characters.\n`;
                 break;
               case 'min':
                 errorMessage += `${controlName} must be greater than 0.\n`;
@@ -107,7 +107,7 @@ export class RegisterComponent {
 
       // Show the error message to the user
       if (this.registerForm.get('is_admin')?.value === 'doctor') {
-        errorMessage +=` department required.\n`;
+        errorMessage += `department required.\n`;
       }
       alert(errorMessage);
       this.isLoading = false;
@@ -131,6 +131,6 @@ export class RegisterComponent {
     return this.registerForm.get('is_admin')?.value === 'doctor' ? Validators.required : null;
     if (this.registerForm.invalid ) {
       alert('check the department')
-    }
-  }
+    }
+  }
 }

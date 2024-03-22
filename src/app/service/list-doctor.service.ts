@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ListDoctor } from '../interface/list-doctor';
 import { Observable } from 'rxjs';
+import { UsersService } from './users.service';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +11,24 @@ import { Observable } from 'rxjs';
 export class ListDoctorService {
 
    allDoctor = `https://ecommerce.routemisr.com/api/v1/products` ;
-    reviewOfDoctor=`https://retoolapi.dev/SJTBhb/data`
+    reviewOfDoctor=`https://retoolapi.dev/SJTBhb/data` ;
+    private authToken :string = '';
+
+  Header : any = {
+    'Authorization': this.authToken ,
+    'Content-Type': 'application/json'
+  };
 
 
-  constructor( private http:HttpClient) { }
+
+    constructor(private http: HttpClient , private localApi : LocalStorageService) {}
+
+    ngOnInit(): void {
+      const userData = this.localApi.getData('user');
+      if (userData && userData.token) {
+        this.authToken = userData.token;
+      }
+    }
 
 
 

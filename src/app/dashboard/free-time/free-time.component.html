@@ -1,0 +1,52 @@
+<div class="container">
+  <!-- free-time.component.html -->
+  <div class="add-freetime">
+    <label for="newFreetime" class="form-label fw-bold">Add Free Time</label>
+    <input
+      type="datetime-local"
+      id="newFreetime"
+      class="form-control"
+      [(ngModel)]="selectedFreetime"
+      name="newFreetime"
+    />
+    <button
+      class="btn btn-primary float-end m-2 btn-lg"
+      (click)="saveNewFreetime()"
+    >
+      Save
+    </button>
+  </div>
+
+  <div class="container m-3 mt-5">
+    <!-- Display existing free times -->
+    @if(1 == 1){
+    <div class="existing-freetimes">
+      <div class="table">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>time</th>
+              <th>action</th>
+            </tr>
+          </thead>
+          @for(freetime of freetimes.freetimes ; track freetime){
+          <tbody>
+            <tr>
+              <td>{{ freetime.doctor_freetimes | date : "EEEE"}}</td>
+              <td>{{ freetime.doctor_freetimes | date : "h:mm a" }}</td>
+              <button
+                (click)="deleteFreetime(freetime.id)"
+                class="btn btn-danger bg-danger text-white fw-bold"
+              >
+                Delete
+              </button>
+            </tr>
+          </tbody>
+          }
+        </table>
+      </div>
+    </div>
+    }
+  </div>
+</div>

@@ -19,16 +19,17 @@ section
 .doctorList:hover{
   border: 0.5px solid #35d69b;
 }
-.doctorList:hover h6{
+.doctorList:hover h5{
   font-weight: 700;
 }
-.btn{
+/* .btn{
   background-color: #35d69b;
   color: #fff;
   border: 1px solid transparent;
   box-shadow:1px 2px 1px inset #35d69b ;
   font-weight: 600;
-}.pagination {
+} */
+.pagination {
   --bs-pagination-padding-x: 0.75rem;
   --bs-pagination-padding-y: 0.375rem;
   --bs-pagination-font-size: 1rem;
@@ -70,3 +71,54 @@ section
   cursor: default;
 } */
 
+.custom-btn {
+  background-color: #3f8ac0; /* Set the initial background color */
+  color: white; /* Set the text color */
+  transition: background-color 0.3s ease; /* Add a transition for smooth color change */
+}
+
+/* Define hover styles for the button */
+.custom-btn:hover {
+  background-color: #93c2e3;
+  color: rgb(32, 58, 79); /* Change the background color on hover */
+}
+
+/* Card styling */
+.doctor-list {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 20px; /* Add spacing between cards */
+}
+
+/* Image styling */
+.doctor-list img {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ccc; /* Optional: for a subtle border */
+}
+
+/* Hover effect */
+.doctor-list:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Font styling */
+.doctor-list h5 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.doctor-list p {
+  font-size: 14px;
+}
+
+/* Description truncation */
+.doctor-list p.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Adjust based on desired number of lines */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

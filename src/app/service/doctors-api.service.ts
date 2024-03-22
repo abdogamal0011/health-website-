@@ -1,54 +1,81 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UsersService } from './users.service';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DoctorsApiService {
+
   private doctorApi = 'http://127.0.0.1:8000/api/doctors';
-  private authToken = 'Bearer 4|YNP3YYmDIPVjmsKsKxNEPAspUSEmqTPgWLHSPy5x5a904eb3';
+  private authToken :string = '';
 
   Header : any = {
     'Authorization': this.authToken ,
     'Content-Type': 'application/json'
   };
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient , private localApi : LocalStorageService) {
+    const userData = this.localApi.getData('user');
+    if (userData && userData.token) {
+      this.authToken = userData.token;
+    }
+  }
+
+  ngOnInit(): void {
+
+  }
 
   getAllDoctors(): Observable<any> {
-    return this.http.get(this.doctorApi, { headers : this.Header });
+    return this.http.get(this.doctorApi);
   }
 
   getOneDoctors(id : number ){
     const url = `${this.doctorApi}/${id}`;
-    return this.http.get(url , {
-      headers : this.Header
-    } )
+    return this.http.get(url )
   }
 
 
   addDoctor(appointmentData : any): Observable<any>{
+    const    authToken : any = localStorage.getItem('user');
+    const   Api : any = JSON.parse(authToken);
+    const  token = Api.token
     return this.http.post(this.doctorApi, appointmentData, {
-      headers: this.Header
+      headers: {
+      'Authorization': `Bearer ${token}` ,
+      'Content-Type': 'application/json'
+    }
     });
   }
 
 
 
   UpdataDoctor(id: number, updatedAppointmentData: any): Observable<any> {
+    const    authToken : any = localStorage.getItem('user');
+    const   Api : any = JSON.parse(authToken);
+    const  token = Api.token
     const url = `${this.doctorApi}/${id}`;
-    return this.http.put(url, updatedAppointmentData, { headers : this.Header });
+    return this.http.put(url, updatedAppointmentData, { headers : {
+      'Authorization': `Bearer ${token}` ,
+      'Content-Type': 'application/json'
+    } });
   }
 
 
   deleteDoctor(id: number): Observable<any> {
+    const    authToken : any = localStorage.getItem('user');
+    const   Api : any = JSON.parse(authToken);
+    const  token = Api.token
     const url = `${this.doctorApi}/${id}`;
-    const headers = new HttpHeaders({
-      'Authorization': this.authToken
-    });
 
-    return this.http.delete(url, { headers });
+
+    return this.http.delete(url, { headers : {
+      'Authorization': `Bearer ${token}` ,
+      'Content-Type': 'application/json'
+    } });
   }
 
 }
