@@ -29,8 +29,7 @@ export class DashAppointmentComponent {
 
   ngOnInit(): void {
 
-    this.appointmentApi.getDocAppointment(this.doctorId).subscribe((data) => { this.appointments = data  ; console.log(this.appointments);
-    })
+  this.showAll()
 
   }
 
@@ -57,7 +56,7 @@ export class DashAppointmentComponent {
     const updatedData = {
         doctor_id: this.doctorId,
         patient_id: appointment.patient.id,
-        // date: appointment.date,
+        date: appointment.date,
         price: appointment.price,
         description: appointment.description,
         status: status,

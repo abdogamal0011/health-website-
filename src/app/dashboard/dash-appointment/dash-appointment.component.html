@@ -37,7 +37,7 @@
                   <tr>
                     <td class="cell">{{appointment.note}}</td>
                     <td class="cell"><span class="truncate">{{appointment.description}}</span></td>
-                    <!-- <td class="cell">{{appointment.patient.name}}</td> -->
+                    <td class="cell">{{appointment.patient.name}}</td>
                     <td class="cell"><span class="cell-data">11 Oct</span><span class="note">11:18 AM</span></td>
                     <td class="cell"><span  class="text-white p-1 fw-bold badge" [ngClass]="{'bg-warning': appointment.status == 'pending'
                                                                                         ,'bg-success': appointment.status == 'completed'
@@ -90,7 +90,7 @@
                   <tr>
                     <td class="cell">{{appointment.note}}</td>
                     <td class="cell"><span class="truncate">{{appointment.description}}</span></td>
-                    <!-- <td class="cell">{{appointment.patient.name}}</td> -->
+                    <td class="cell">{{appointment.patient.name}}</td>
                     <td class="cell"><span class="cell-data">11 Oct</span><span class="note">11:18 AM</span></td>
                     <td class="cell"><span  class="text-white p-1 fw-bold badge" [ngClass]="{'bg-warning': appointment.status == 'pending'
                                                                                         ,'bg-success': appointment.status == 'completed'
@@ -140,7 +140,7 @@
                   <tr>
                     <td class="cell">{{appointment.note}}</td>
                     <td class="cell"><span class="truncate">{{appointment.description}}</span></td>
-                    <!-- <td class="cell">{{appointment.patient.name}}</td> -->
+                    <td class="cell">{{appointment.patient.name}}</td>
                     <td class="cell"><span class="cell-data">11 Oct</span><span class="note">11:18 AM</span></td>
                     <td class="cell"><span  class="text-white p-1 fw-bold badge" [ngClass]="{'bg-warning': appointment.status == 'pending'
                                                                                         ,'bg-success': appointment.status == 'completed'
@@ -183,7 +183,7 @@
                   <tr>
                     <td class="cell">{{appointment.note}}</td>
                     <td class="cell"><span class="truncate">{{appointment.description}}</span></td>
-                    <!-- <td class="cell">{{appointment.patient.name}}</td> -->
+                    <td class="cell">{{appointment.patient.name}}</td>
                     <td class="cell"><span class="cell-data">11 Oct</span><span class="note">11:18 AM</span></td>
                     <td class="cell"><span  class="text-white p-1 fw-bold badge" [ngClass]="{'bg-warning': appointment.status == 'pending'
                                                                                         ,'bg-success': appointment.status == 'completed'
@@ -214,31 +214,3 @@
 
 
 
-<!-- </div>
-<div [formGroup]="form" >
-  <form action="javascript:void(0)" (submit)="send()">
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input formControlName="from_name" type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input formControlName="from_email" type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input formControlName="subject" type="text" name="subject" class="form-control" id="subject" aria-describedby="emailHelp">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input formControlName="message" type="text" name="message" class="form-control" id="message" aria-describedby="emailHelp">
-    </div>
-
-   <div>
-
-   </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-
-</div> -->
-<button (click)="sendEmail()" class="btn btn-primary">Submit</button>

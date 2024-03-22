@@ -34,13 +34,11 @@
 
         <div class="col-md-4" >
           <div class="card doctor-list text-center"> <div class="imageDoctor d-flex justify-content-center align-items-center">
-            <img src="http://127.0.0.1:8000/{{doctor.image}}" class="w-25 rounded-circle" [alt]="doctor.title"></div>
+              <img [src]="doctor.image" class="rounded-circle mx-auto d-block" alt="Doctor Image"> </div>
             <div class="card-body">
               <h5>{{ doctor.name | searchDoctor : 1 }}</h5>
               <p>{{ doctor.specialty | searchDoctor : 1 }}</p>
-              <p class="description"> {{ doctor.description | searchDoctor : 3 }}
-              </p>
-              <p class="description"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, placeat!
+              <p class=" text-center"> {{ doctor.description | searchDoctor : 3 }}
               </p>
               <div class="star-rating"> <i *ngFor="let star of [1, 2, 3, 4, 5]; track by star" [class.fa-solid]="doctor.ratingsAverage >= star" class="fa-star fa-regular" style="color: #FFD43B;"></i>
               </div>
@@ -69,11 +67,4 @@
     >
     </pagination-controls> -->
   </div>
-</section>
-
-<section>
-  @for (doctor of doctors.doctors; track doctor.id) {
-  <h1>{{ doctor.name }}</h1>
-
-  }
 </section>

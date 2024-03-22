@@ -8,7 +8,7 @@
       </div>
     }@else {
       <div class="align-items-center w-100  justify-content-between d-none d-md-flex">
-        <a class="bi bi-clock nav-link scrollto text-capitalize " routerLink="" > Welcome {{ user.user.name }} </a>
+        <a class="bi bi-clock nav-link scrollto text-capitalize " routerLink="home/fb" > Welcome {{ user.user.name }} </a>
         <a class="btn text-white  fw-bold " routerLink="" > logout </a>
 
       </div>
@@ -50,7 +50,13 @@
               <li><a href="#">Drop Down 4</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          @if (user.user.is_admin == 'patient') {
+            <li><a class="nav-link scrollto" href="/home/pf">patient</a></li>
+          }@else if (user.user.is_admin == 'doctor') {
+            <li><a class="nav-link scrollto" href="/home/DashbordAdminComponent">Doctor</a></li>
+          }@else if (user.user.is_admin == 'admin') {
+            <li><a class="nav-link scrollto" href="/admin">Admin</a></li>
+          }
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
