@@ -1,22 +1,17 @@
-import { AppointmentApiService } from './../service/appointment-api.service';
 import { Component } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators
-} from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AppointmentApiService } from '../service/appointment-api.service';
 import { DoctorsApiService } from '../service/doctors-api.service';
 
 @Component({
-  selector: 'app-apointment',
+  selector: 'app-add-appointment',
   standalone: true,
   imports: [ReactiveFormsModule],
-  templateUrl: './apointment.component.html',
-  styleUrl: './apointment.component.css',
+  templateUrl: './add-appointment.component.html',
+  styleUrl: './add-appointment.component.css'
 })
-export class ApointmentComponent {
+export class AddAppointmentComponent {
+
   appForm: FormGroup;
   doctors: any[] = [];
 
@@ -45,7 +40,7 @@ export class ApointmentComponent {
   ngOnInit(): void {
     this.doctorApi.getAllDoctors().subscribe(
       (data) => {
-        this.doctors = data.doctors.docotor;
+        this.doctors = data.doctors;
         console.log(this.doctors);
       },
       (error) => {

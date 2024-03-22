@@ -149,9 +149,9 @@
 
                 <div class="mb-3">
                   <label for="doctorId" class="form-label">chosse date</label>
-                  <select class="form-control" id="doctorId" formControlName="date">
+                  <select class="form-control" id="doctorId" name="date" formControlName="date">
                     @for (date of doctor.doctor.freetime; track date.id) {
-                      <option [value]="date.doctor_freetimes">{{ date.doctor_freetimes}}</option>
+                      <option name="date"  [value]="getdate(date.doctor_freetimes)">{{ date.doctor_freetimes}}</option>
                     }
 
                   </select>
@@ -186,11 +186,8 @@
                 @if (appForm.controls['price'].invalid && appForm.controls['price'].touched) {
                     @if (appForm.controls['price'].errors?.['required']) {
                         <span  class="form-text text-danger">these field is required.</span>
-
                     }
-
                   }
-
                 <button type="submit" class="btn btn-primary w-100" [disabled]="appForm.invalid">Submit</button>
               </form>
             </div>
