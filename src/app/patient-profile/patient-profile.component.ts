@@ -12,9 +12,10 @@ import { log } from 'console';
 export class PatientProfileComponent {
   patient: any;
   constructor(private patientApi:PatientApiService ){
-    
+
   }
   ngOnInit(){
+    // location.reload();
     this.patientApi.getOnepatient(1).subscribe((data)=>{this.patient= data; console.log(this.patient);
     });
   }

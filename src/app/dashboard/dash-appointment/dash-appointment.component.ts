@@ -92,24 +92,25 @@
 
           // Replace placeholders with actual values
           const emailParams = {
-            from_name: "Doctor",
-            to_name: "Ahmed",
-            from_email: "ahmedmanaour990@gmail.com", // Replace with the doctor's email
-            to_email: "ahmedmanaour990@gmail.com", // Use the provided patient's email address
-            subject: "Appointment Confirmation",
-            message: 'emailMessage' // Use the provided email message
+              from_name: "Doctor",
+              to_name: "Ahmed",
+              from_email: "abdogamal000@gmail.com", // Replace with the doctor's email
+              to_email: "abdogamal000@gmail.com", // Use the provided patient's email address
+              subject: "Appointment Confirmation",
+              message: 'http://localhost:4200/payment' // Example link
           };
 
           emailjs.send("service_3udjqfc", "template_wgilzxq", emailParams)
-            .then(response => {
-              console.log('Email sent:', response);
-              alert('Email sent');
-            })
-            .catch(error => {
-              console.error('Error sending email:', error);
-              alert('Failed to send email');
-            });
-        }
+              .then(response => {
+                  console.log('Email sent:', response);
+                  alert('Email sent');
+              })
+              .catch(error => {
+                  console.error('Error sending email:', error);
+                  alert('Failed to send email');
+              });
+      }
+
 
 
 

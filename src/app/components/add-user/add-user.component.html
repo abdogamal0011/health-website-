@@ -2,7 +2,7 @@
 <div class="container register-container w-100  ">
   <div class="card shadow border">
     <div class="card-header ">
-  <h3 class="reg">update</h3>
+  <h3 class="reg">add</h3>
     </div>
     <div class="card-body">
       <form [formGroup]="updateForm" class="p-3 bg-light" (ngSubmit)="handleForm()">
@@ -43,7 +43,7 @@
         </div>
       }
         </div>
-        <!-- <div class="form-group  d-flex justify-content-around align-items-center">
+        <div class="form-group  d-flex justify-content-around align-items-center">
           <div class="male">
             <label class="p-2" for="Male">Male :</label>
             <input  type="radio" id="Male"
@@ -61,8 +61,8 @@
               formControlName="gender"
               >
             </div>
-                </div> -->
-        <!-- <div class="form-group">
+                </div>
+        <div class="form-group">
 
           <input
           placeholder="Enter the Password "
@@ -97,15 +97,15 @@
        placeholder="Enter the age"
        name="age"
           >
-        </div> -->
-        <!-- <div class="form-group">
+        </div>
+         <div class="form-group">
        <input type="text" id="address"
         formControlName="address"
        class="form-control my-3"
        placeholder="Enter the address"
        name="address"
           >
-        </div> -->
+        </div>
         <div class="form-group  d-flex justify-content-around align-items-center">
             <div class="doctor">
               <label class="p-2" for="Doctor" >Doctor :</label>
@@ -145,7 +145,7 @@
   type="submit"
   class="btn btn-primary d-block w-100 "
 >
-  update
+  Add
 </button>
 </div>
       </form>

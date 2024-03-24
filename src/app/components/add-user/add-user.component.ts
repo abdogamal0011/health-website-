@@ -9,20 +9,17 @@ import {
   Validators,
 } from '@angular/forms';
 @Component({
-  selector: 'app-update-user',
+  selector: 'app-add-user',
   standalone: true,
-  imports: [
-    ReactiveFormsModule , RouterLink
-    ],
-  templateUrl: './update-user.component.html',
-  styleUrl: './update-user.component.css'
+  imports: [ReactiveFormsModule],
+  templateUrl: './add-user.component.html',
+  styleUrl: './add-user.component.css'
 })
-export class UpdateUserComponent  {
+export class AddUserComponent {
   data: any;
   error: string = '';
   userId: any = this.route.snapshot.params['id'] ;
   updateData:any;
-  dataSend:any;
 
 
   constructor(
@@ -32,30 +29,18 @@ export class UpdateUserComponent  {
     private router: Router,
 
   ) {
-    this.route.queryParams.subscribe((params: any) => {
-      const data = params.data;
-      const keyValuePairs = data.split('&');
-      const myObject: any = {};
-      keyValuePairs.forEach((keyValuePair: any) => {
-        const [key, value] = keyValuePair.split('=');
-        const decodedValue = decodeURIComponent(value.replace(/\+/g, ' '));
-        myObject[key] = decodedValue;
-      });
-      console.log(myObject);
-      this.dataSend=myObject;
-      this.updateForm.patchValue(myObject, { emitEvent: true, onlySelf: false });
-    });
+
   }
 
   updateForm: FormGroup = new FormGroup({
     name: new FormControl('', [ Validators.minLength(3), Validators.maxLength(20)]),
     email: new FormControl('', [ Validators.email]),
-    // password: new FormControl('', [ Validators.pattern(/^[a-zA-Z0-9_@]{6,}$/)]),
-    // gender: new FormControl('', []),
-    // age: new FormControl('', []),
-    // number: new FormControl('', []),
+    password: new FormControl('', [ Validators.pattern(/^[a-zA-Z0-9_@]{6,}$/)]),
+    gender: new FormControl('', []),
+    age: new FormControl('', []),
+    number: new FormControl('', []),
     is_admin: new FormControl('', []),
-    // address: new FormControl('', []),
+    address: new FormControl('', []),
     department_id: new FormControl('', [])
   });
   ngOnInit(): void {
@@ -71,7 +56,7 @@ export class UpdateUserComponent  {
     console.log(this.updateForm.value);
     let userData = this.updateForm.value;
     if (this.updateForm.valid === true) {
-      this.Auth.updateUser(this.dataSend.id, userData).subscribe(
+      this.Auth.addUser(userData).subscribe(
         (res) => {
           this.data = res;
           if (this.data.message === 'successfully') {

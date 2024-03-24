@@ -11,7 +11,7 @@ import { AppointmentApiService } from '../service/appointment-api.service';
 import { LocalStorageService } from '../service/local-storage.service';
 import { routes } from '../app.routes';
 import { Router } from '@angular/router';
-
+import { UniqueArrayPipe } from '../pipe/unique-array.pipe';
 // Define the Comment interface
 interface Comment {
   text: string;
@@ -29,11 +29,13 @@ interface Comment {
     CommonModule ,
     FormsModule ,
     ReactiveFormsModule ,
-    RouterLink
+    RouterLink,
+
 
   ]
 })
 export class DoctorDetailsComponent implements OnInit {
+
 
 
   textComment :string = '' ;
@@ -74,15 +76,29 @@ export class DoctorDetailsComponent implements OnInit {
           Validators.maxLength(200),
         ],
       ],
-      price: ['', [Validators.required]],
-      patient_id: ['', [Validators.required]],
+      price: ['200', [Validators.required]],
+      patient_id: [this.userId, []],
       doctor_id: ['', [Validators.required]],
       date: ['', [Validators.required]],
     });
 
 
   }
+  getUniqueDoctorFreetimes() {
+    const uniqueFreetimes = [];
+    const seen = new Set();
 
+    for (const time of this.doctor.doctor.freetime) {
+      const key = time.doctor_freetimes;
+
+      if (!seen.has(key)) {
+        seen.add(key);
+        uniqueFreetimes.push(time);
+      }
+    }
+
+    return uniqueFreetimes;
+  }
 
   appiontmentDate:any ='';
 
@@ -156,6 +172,8 @@ export class DoctorDetailsComponent implements OnInit {
 
 
   handleSubmitForm() {
+    const    authToken : any = localStorage.getItem('user');
+    const   Api : any = JSON.parse(authToken);
 
 
     if (this.appForm.valid) {
@@ -164,7 +182,7 @@ export class DoctorDetailsComponent implements OnInit {
         description: this.appForm.get('description')?.value,
         price: this.appForm.get('price')?.value,
         doctor_id:this.appForm.get('doctor_id')?.value ,
-        patient_id: this.appForm.get('patient_id')?.value,
+        patient_id: Api.id,
         date: this.appForm.get('date')?.value,
         status : 'pending' ,
       };

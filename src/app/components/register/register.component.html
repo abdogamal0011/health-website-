@@ -181,11 +181,16 @@
           }
             </div>
             <div class="departement d-none" id="departement">
-
-              <input class="my-2 form-control" type="text" id="departement" name="department_id"
+              <select class="form-control" id="departement" name="department_id" formControlName="department_id">
+                <option disabled selected value="">Select the Department</option>
+                @for (date of departments ; track date.id) {
+                  <option name="date"   [value]="date.id">{{date.name}}</option>
+                }
+              </select>
+              <!-- <input class="my-2 form-control" type="text" id="departement" name="department_id"
               formControlName="department_id"
               placeholder="Enter the departement id"
-               >
+               > -->
                @if (registerForm.get('departement')?.errors && registerForm.get('departement')?.touched) {
                 <div id="emailHelp" class="alert alert-danger p-1 small w-50 mx-auto text-center  ">
                   @if ( registerForm.get('departement')?.getError("required")) {
@@ -209,5 +214,5 @@
         <p class="alert alert-danger p-1 w-50 mx-auto mb-0">{{this.error}}</p>
       }
     </div>
-  </div>
-  </div>
+</div>
+</div>

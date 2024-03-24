@@ -140,8 +140,8 @@
                 <div class="mb-3">
                   <label for="doctorId" class="form-label">chosse date</label>
                   <select class="form-control" id="doctorId" name="date" formControlName="date">
-                    @for (date of doctor.doctor.freetime; track date.id) {
-                      <option name="date"  [value]="getdate(date.doctor_freetimes)">{{ date.doctor_freetimes}}</option>
+                    @for (date of getUniqueDoctorFreetimes() ; track date.id) {
+                      <option name="date"  [value]="getdate(date.doctor_freetimes)">From {{ date.doctor_freetimes |date : "h:mm a"}} To {{ date.doctor_freetimesto|date : "h:mm a"}}</option>
                     }
 
                   </select>
@@ -153,9 +153,9 @@
                   </select>
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3 d-none">
                   <label for="patientId" class="form-label">Patient ID</label>
-                  <input type="number" class="form-control" id="patientId" name="patient_id" formControlName="patient_id" />
+                  <input type="number" class="form-control "  id="patientId" name="patient_id" [value]="userId"  formControlName="patient_id" />
                 </div>
 
 

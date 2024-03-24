@@ -26,6 +26,7 @@ export class FreetimeComponent {
 
   freetimes: any = { };
   selectedFreetime: string = '';
+  selectedFreetimeto: string = '';
   doctorId: number = 1;
   editedFreetimeId: number | null = null;
   editedFreetime: string = '';
@@ -66,7 +67,8 @@ export class FreetimeComponent {
     if (this.selectedFreetime) {
       // Format the selectedFreetime manually
       const formattedFreetime = this.formatDateTime(new Date(this.selectedFreetime));
-      const newFreetime = { doctor_id: this.doctorId, doctor_freetimes: formattedFreetime };
+      const formattedFreetimeto = this.formatDateTime(new Date(this.selectedFreetimeto));
+      const newFreetime = { doctor_id: this.doctorId, doctor_freetimes: formattedFreetime ,doctor_freetimesto: formattedFreetimeto };
       this.freetimeapi.createFreetime(newFreetime).subscribe(
         () => {
           console.log('New freetime saved successfully');

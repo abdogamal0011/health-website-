@@ -38,8 +38,6 @@ export class UsersService {
   const   Api : any = JSON.parse(authToken);
   const  token = Api.token
 
-
-
     return this.http.get(`http://127.0.0.1:8000/api/users/${id}`, { headers :  {
         'Authorization': `Bearer ${token}` ,
         'Content-Type': 'application/json'
@@ -65,10 +63,20 @@ export class UsersService {
     const    authToken : any = localStorage.getItem('user');
     const   Api : any = JSON.parse(authToken);
     const  token = Api.token
-    return this.http.patch(`http://127.0.0.1:8000/api/users/${id}`, { headers : {
+    return this.http.patch(`http://127.0.0.1:8000/api/users/${id}`,userData, { headers : {
       'Authorization': `Bearer ${token}` ,
       'Content-Type': 'application/json'
-    }} ,userData
+    }}
+  );}
+  addUser(userData:object):Observable<any>{
+    const    authToken : any = localStorage.getItem('user');
+    const   Api : any = JSON.parse(authToken);
+    const  token = Api.token
+    console.log(token , userData)
+    return this.http.post(`http://127.0.0.1:8000/api/users`,userData, { headers : {
+      'Authorization': `Bearer ${token}` ,
+      'Content-Type': 'application/json'
+    }}
   );}
 
 

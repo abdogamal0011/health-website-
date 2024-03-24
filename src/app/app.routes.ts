@@ -20,9 +20,17 @@ import { PostsComponent } from './components/posts/posts.component';
 import { DashbordAdminComponent } from './components/dashbord-admin/dashbord-admin.component';
 import { AboutComponent } from './about/about.component';
 import { PatienttComponent } from './patientt/patientt.component';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { AuthGuardLoginService } from './service/auth-guard-login.service';
 
 
 export const routes: Routes = [
+  {
+    path:'payment',
+    component:PaymentComponent
+  },
 
 
     {
@@ -42,11 +50,13 @@ export const routes: Routes = [
 
       {
           path: "ap",
+          canActivate: [AuthGuardLoginService],
           component: ApointmentComponent ,
-          title: "  apointment  Page "
+          title: "  apointment  Page ",
       },
       {
         path: "patient",
+        canActivate: [AuthGuardLoginService],
         component: PatienttComponent ,
         title: "  patient  Page "
     },
@@ -63,21 +73,27 @@ export const routes: Routes = [
       },
       {
           path: "doctors",
+          canActivate: [AuthGuardLoginService],
           component: ListOfDoctorsComponent ,
           title: "doctors Page "
       } ,
       {
           path: "pf",
+          canActivate: [AuthGuardLoginService],
           component: PatientProfileComponent,
           title: "Profile "
       } ,
       {
         path:"doctorDetails/:id" ,
+        canActivate: [AuthGuardLoginService],
+
         component:DoctorDetailsComponent ,
         title : "details"
       } ,
       {
         path:"profial/:id" ,
+        canActivate: [AuthGuardLoginService],
+
         component:ProfialComponent ,
         title : "details"
       } ,
@@ -109,6 +125,7 @@ export const routes: Routes = [
 
     {
       path : 'admin' ,
+      canActivate: [AuthGuardLoginService],
       component : AdminComponent ,
       title : "dashboard" ,
       children : [
@@ -145,6 +162,14 @@ export const routes: Routes = [
           component : DashbordAdminComponent ,
 
         } ,
+        {
+          path:'update-user',
+          component:UpdateUserComponent
+        },
+        {
+          path:'add-user',
+          component:AddUserComponent
+        },
         {
 
           path:'freeTimes' ,

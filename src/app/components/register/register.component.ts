@@ -20,7 +20,7 @@ export class RegisterComponent {
   data: any;
   error: string = '';
   isLoading: boolean = false;
-
+  departments: any =[];
 
 
 
@@ -29,7 +29,11 @@ export class RegisterComponent {
     private Auth: AuthService,
     private Router: Router,
     private renderer: Renderer2
-  ) {}
+  ) {
+    this.Auth.departemnt().subscribe((res) => {
+      this.departments = res;
+    });
+  }
 
   registerForm: FormGroup = new FormGroup({
     name: new FormControl('', [
@@ -109,7 +113,8 @@ export class RegisterComponent {
       if (this.registerForm.get('is_admin')?.value === 'doctor') {
         errorMessage += `department required.\n`;
       }
-      alert(errorMessage);
+      // errorMessage
+      this.error=errorMessage
       this.isLoading = false;
     }
   }

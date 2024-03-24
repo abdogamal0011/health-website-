@@ -28,7 +28,8 @@ export class ListOfDoctorsComponent {
 
   ngOnInit():void{
 
-       this._doctorApi.getAllDoctors().subscribe(data=> {this.doctors= data,console.log(this.doctors);
+       this._doctorApi.getAllDoctors().subscribe(data=> {this.doctors= data
+        console.log(this.doctors);
        })
 
 

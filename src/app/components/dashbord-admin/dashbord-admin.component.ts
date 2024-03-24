@@ -33,8 +33,25 @@ export class DashbordAdminComponent {
       });
     }
 
-    updateUser(id:number){
-    this.Router.navigate(['update-user',id]);
-    this.alluser();
+    updateUser(data:any){
+    // this.Router.navigate(['update-user',id]);
+    // this.alluser();
+    const queryParams = new URLSearchParams();
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        const value = data[key] !== null ? data[key] : "";
+        queryParams.set(key, value);
+      }
+    }
+    const queryParamsString = queryParams.toString();
+    const routeUrl = `admin/update-user`;
+    const navigationExtras = {
+      queryParams: { data: queryParamsString }
+    };
+    this.Router.navigate([routeUrl], navigationExtras);
+    }
+    addUser(){
+      const routeUrl = 'admin/add-user';
+      this.Router.navigate([routeUrl]);
     }
 }

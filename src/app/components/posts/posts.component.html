@@ -3,7 +3,7 @@
     @for (post of post.data; track post.id) {
     <div class="col-md-4">
       <div class="card">
-        <img src="https://www.collinsdictionary.com/images/full/patient_589302497_1000.jpg" class="card-img-top" alt="Post Image">
+        <img src="http://127.0.0.1:8000/{{post.image}}" class="card-img-top" alt="Post Image">
         <div class="card-body">
           <h5 class="card-title">{{ post.title }}</h5>
           <p class="card-text">{{ post.hint }}........</p>
@@ -24,9 +24,9 @@
             <h1 class="modal-title fs-5" id="exampleModalLabel">{{ post.title }}</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <img src="https://www.collinsdictionary.com/images/full/patient_589302497_1000.jpg" class="card-img-top" alt="Post Image">
+          <img src="http://127.0.0.1:8000/{{post.image}}" class="card-img-top" alt="Post Image">
           <div class="modal-body">
-            {{ post.body }}
+          <p>{{ post.body }}</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -43,22 +43,32 @@
 <!-- Add post -->
 
 <div class="container m-5 p-5">
-  <form action="your-server-endpoint" method="post">
+
+  <form [formGroup]="AddPost" (submit)="newpost()">
     <div class="form-group">
       <label for="postTitle">Title</label>
-      <input type="text" class="form-control" id="postTitle" name="title" placeholder="Enter title" required>
+      <input type="text" class="form-control" id="postTitle" name="title" placeholder="Enter title"
+        formControlName="title" required>
     </div>
     <div class="form-group">
       <label for="postHint">Hint</label>
-      <input type="text" class="form-control" id="postHint" name="hint" placeholder="Enter hint" required>
+      <input type="file" class="form-control" id="image" name="image" placeholder="Enter image"
+        (change)="onImageSelected($event)" required>
+    </div>
+    <div class="form-group">
+      <label for="postHint">Hint</label>
+      <input type="text" class="form-control" id="postHint" name="hint" placeholder="Enter hint"
+        formControlName="hint" required>
     </div>
     <div class="form-group">
       <label for="postBody">Body</label>
-      <textarea class="form-control" id="postBody" name="body" rows="3" placeholder="Enter body" required></textarea>
+      <textarea class="form-control" id="postBody" name="body" rows="3" placeholder="Enter body"
+        formControlName="body" required></textarea>
     </div>
     <button type="submit" class="btn custom-btn">Create Post</button>
   </form>
-  
+
+
 </div>
 
 

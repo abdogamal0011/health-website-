@@ -9,6 +9,13 @@
       [(ngModel)]="selectedFreetime"
       name="newFreetime"
     />
+    <input
+      type="datetime-local"
+      id="newFreetimeto"
+      class="form-control"
+      [(ngModel)]="selectedFreetimeto"
+      name="newFreetimeto"
+    />
     <button
       class="btn btn-primary float-end m-2 btn-lg"
       (click)="saveNewFreetime()"
@@ -25,8 +32,10 @@
         <table class="table">
           <thead>
             <tr>
-              <th>Day</th>
-              <th>time</th>
+              <th>Day From</th>
+              <th>time From</th>
+              <th>Day To</th>
+              <th>time To</th>
               <th>action</th>
             </tr>
           </thead>
@@ -35,6 +44,8 @@
             <tr>
               <td>{{ freetime.doctor_freetimes | date : "EEEE"}}</td>
               <td>{{ freetime.doctor_freetimes | date : "h:mm a" }}</td>
+              <td>{{ freetime.doctor_freetimesto | date : "EEEE"}}</td>
+              <td>{{ freetime.doctor_freetimesto | date : "h:mm a" }}</td>
               <button
                 (click)="deleteFreetime(freetime.id)"
                 class="btn btn-danger bg-danger text-white fw-bold"
