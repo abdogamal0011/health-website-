@@ -28,15 +28,21 @@ import { RouteAppLoginService } from './service/route-app-login.service';
 import { RouteAppLoginAndRegisterService } from './service/route-app-login-and-register.service';
 import { DepartmentComponent } from './components/department/department.component';
 import { ProtectdashboradService } from './service/protectdashborad.service';
+import { ByLoginService } from './service/by-login.service';
 
 
 export const routes: Routes = [
   {
     path:'payment',
+    canActivate: [ByLoginService],
     component:PaymentComponent
   },
 
-
+  // {
+  //   path:'',
+  //   redirectTo:'home',
+  //   pathMatch:'full'
+  // },
     {
       path :'home' ,
       component : LayoutComponent ,
