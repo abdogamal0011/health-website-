@@ -15,6 +15,8 @@ import {
 })
 export class PostsComponent {
   post:any;
+  error: string = '';
+
 constructor(private posts_servieces:PostsService  ){}
 ngOnInit(){
 
@@ -48,6 +50,48 @@ onImageSelected(event: any) {
 }
 
 newpost() {
+  if (this.AddPost.valid) {
+
+
+
+  } else {
+    let errorMessage = 'Please correct the following errors: \n';
+
+    Object.keys(this.AddPost.controls).forEach((controlName) => {
+      const control = this.AddPost.get(controlName);
+      if (control && control.invalid && control.errors !== null) {
+        Object.keys(control.errors).forEach((error) => {
+          switch (error) {
+            case 'required':
+              errorMessage +=` ${controlName} is required.\n`;
+              break;
+            case 'is_admin':
+              errorMessage += `${controlName} is required.\n`;
+              break;
+            case 'minlength':
+              errorMessage += `${controlName} must be at least 6 characters long.\n`;
+              break;
+            case 'email':
+              errorMessage +=` ${controlName} must be a valid email address.\n`;
+              break;
+            case 'pattern':
+              errorMessage +=` ${controlName} contains invalid characters.\n`;
+              break;
+            case 'min':
+              errorMessage += `${controlName} must be greater than 0.\n`;
+              break;
+            // Add cases for other validation errors as needed
+          }
+        });
+      }
+    });
+
+    // Show the error message to the user
+    if (this.AddPost.get('is_admin')?.value === 'doctor') {
+      errorMessage += `department required.\n`;
+    }
+    this.error=errorMessage
+  }
   const formData = new FormData();
   formData.append('title', this.AddPost.value.title);
   formData.append('hint', this.AddPost.value.hint);

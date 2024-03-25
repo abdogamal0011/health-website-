@@ -142,16 +142,14 @@ export class DoctorDetailsComponent implements OnInit {
 
   submitForm() {
     if (this.isAuth) {
-
+      const    authToken : any = localStorage.getItem('user');
+      const   Api : any = JSON.parse(authToken);
       const commentData = {
         comment: this.textComment,
         rating: this.rate,
-        user_id:  this.userId ,
+        user_id:  Api.id,
         doctor_id: this.doctorId ,
       };
-
-      console.log('commentData' , commentData );
-
 
       this.commentApi.addComment(commentData).subscribe(
         (response) => {
@@ -193,6 +191,8 @@ export class DoctorDetailsComponent implements OnInit {
         (response) => {
           console.log('Appointment added successfully:', response);
           this.appForm.reset();
+          // this._route.navigate(['/home/doctors']);
+
         },
         (error) => {
           console.error('Error adding appointment:', error);

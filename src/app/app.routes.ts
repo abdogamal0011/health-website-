@@ -24,6 +24,10 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { AuthGuardLoginService } from './service/auth-guard-login.service';
+import { RouteAppLoginService } from './service/route-app-login.service';
+import { RouteAppLoginAndRegisterService } from './service/route-app-login-and-register.service';
+import { DepartmentComponent } from './components/department/department.component';
+import { ProtectdashboradService } from './service/protectdashborad.service';
 
 
 export const routes: Routes = [
@@ -47,6 +51,10 @@ export const routes: Routes = [
         path:'about' ,
         component : AboutComponent ,
       },
+      {
+        path:'department' ,
+        component : DepartmentComponent ,
+      },
 
       {
           path: "ap",
@@ -63,11 +71,13 @@ export const routes: Routes = [
 
       {
           path: "register",
+          canActivate: [RouteAppLoginAndRegisterService],
           component: RegisterComponent ,
           title: " Registeration Page "
       },
       {
           path: "login",
+          canActivate: [RouteAppLoginAndRegisterService],
           component: LoginComponent ,
           title: "login Page "
       },
@@ -125,7 +135,7 @@ export const routes: Routes = [
 
     {
       path : 'admin' ,
-      canActivate: [AuthGuardLoginService],
+      canActivate: [AuthGuardLoginService , ProtectdashboradService ],
       component : AdminComponent ,
       title : "dashboard" ,
       children : [

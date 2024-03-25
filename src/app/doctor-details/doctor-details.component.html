@@ -1,16 +1,16 @@
 <section class="mt-5">
-  <div class="container1 d-flex flex-column mt-5">
+  <div class="container1 d-flex w-50 mt-5">
     <div class="img">
-      <img [src]="doctor.doctor.image"  alt="" />
+      <img src="http://127.0.0.1:8000/{{doctor.doctor.image}}" class="w-100"  alt="" />
     </div>
 
     <div class="details ps-md-5 d-flex align-items-start">
       <div class="line h-100 border border-1"></div>
 
       <div class="text px-md-5 pt-3">
-        <div class="title d-flex align-items-center justify-content-between">
+        <div class="title">
           <h2>Dr : {{ doctor.doctor.name }}</h2>
-          <span class="available bg-primary">available</span>
+          <p class="text-primary fs-3 ">Available</p>
         </div>
 
         <p class="description pt-lg-2">
@@ -30,11 +30,7 @@
           <span> 200 <span class="fw-bold">Eg</span></span>
         </p>
 
-        <div class="vote d-flex align-items-center justify-content-between">
-          <a [href]="doctor?.homepage" target="_blank" class="homepage"
-            >Location</a
-          >
-        </div>
+
       </div>
     </div>
   </div>
@@ -141,7 +137,7 @@
                   <label for="doctorId" class="form-label">chosse date</label>
                   <select class="form-control" id="doctorId" name="date" formControlName="date">
                     @for (date of getUniqueDoctorFreetimes() ; track date.id) {
-                      <option name="date"  [value]="getdate(date.doctor_freetimes)">From {{ date.doctor_freetimes |date : "h:mm a"}} To {{ date.doctor_freetimesto|date : "h:mm a"}}</option>
+                      <option name="date"  [value]="getdate(date.doctor_freetimes)">From {{ date.doctor_freetimes |date :" EEEE: h:mm a"}} To {{ date.doctor_freetimesto|date :" EEEE: h:mm a" }}</option>
                     }
 
                   </select>
@@ -259,7 +255,7 @@
         <div class="one-comment row m-2">
           <div class="col-md-1 d-flext flex-column align-items-center justify-content-center text-center" >
             <img width="100%" src="https://marketplace.canva.com/EAFqNrAJpQs/1/0/1600w/canva-neutral-pink-modern-circle-shape-linkedin-profile-picture-WAhofEY5L1U.jpg" class="patient-image" alt="">
-            <p>{{comment.user.name}}</p>
+            <!-- <p>{{comment.user.name}}</p> -->
           </div>
 
           <div class="col-md-1" ></div>

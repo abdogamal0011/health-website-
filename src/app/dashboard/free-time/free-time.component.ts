@@ -5,6 +5,7 @@ import { pipe } from 'rxjs';
 import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+
 interface TimeSlot {
   time: string;
   available: boolean;
@@ -24,8 +25,10 @@ interface CalendarDay {
 })
 export class FreetimeComponent {
 
+  selectedDay: string = '';
   freetimes: any = { };
   selectedFreetime: string = '';
+  day: string = '';
   selectedFreetimeto: string = '';
   doctorId: number = 1;
   editedFreetimeId: number | null = null;
@@ -43,7 +46,6 @@ export class FreetimeComponent {
     this.freetimeapi.getAllFreetimes(this.doctorId).subscribe(
       (data) => {
         this.freetimes = data;
-        console.log("one" , this.freetimes);
 
       },
       (error) => {
@@ -52,35 +54,76 @@ export class FreetimeComponent {
     );
   }
 
-  formatDateTime(dateTime: Date): string {
-    const year = dateTime.getFullYear();
-    const month = ('0' + (dateTime.getMonth() + 1)).slice(-2);
-    const day = ('0' + dateTime.getDate()).slice(-2);
-    const hours = ('0' + dateTime.getHours()).slice(-2);
-    const minutes = ('0' + dateTime.getMinutes()).slice(-2);
-    const seconds = ('0' + dateTime.getSeconds()).slice(-2);
+  // formatDateTime(dateTime: Date): string {
+  //   const year = dateTime.getFullYear();
+  //   const month = ('0' + (dateTime.getMonth() + 1)).slice(-2);
+  //   const day = ('0' + dateTime.getDate()).slice(-2);
+  //   const hours = ('0' + dateTime.getHours()).slice(-2);
+  //   const minutes = ('0' + dateTime.getMinutes()).slice(-2);
+  //   const seconds = ('0' + dateTime.getSeconds()).slice(-2);
 
-    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-  }
+  //   return ${year}-${month}-${day} ${hours}:${minutes}:${seconds};
+  // }
 
   saveNewFreetime() {
-    if (this.selectedFreetime) {
-      // Format the selectedFreetime manually
-      const formattedFreetime = this.formatDateTime(new Date(this.selectedFreetime));
-      const formattedFreetimeto = this.formatDateTime(new Date(this.selectedFreetimeto));
-      const newFreetime = { doctor_id: this.doctorId, doctor_freetimes: formattedFreetime ,doctor_freetimesto: formattedFreetimeto };
-      this.freetimeapi.createFreetime(newFreetime).subscribe(
-        () => {
-          console.log('New freetime saved successfully');
-          this.fetchFreetimes(); // Refresh the list of freetimes
-          this.selectedFreetime = ''; // Clear the selectedFreetime
-        },
-        (error) => {
-          console.error('Error saving new freetime:', error);
+    console.log('Selected Day:', this.selectedDay);
+    console.log('Selected Freetime:', this.selectedFreetime);
+    console.log('Selected Freetimeto:', this.selectedFreetimeto);
+
+    if (this.selectedFreetime && this.selectedDay) {
+
+      let usingDays : any ;
+      // Check if the selected day already exists among the existing freetimes
+      this.freetimeapi.getAllFreetimes(this.doctorId).subscribe(data => {
+        usingDays = data
+        if (Array.isArray(usingDays.freetimes)) {
+          const existingFreetimes = usingDays.freetimes;
+          const isDayAlreadySelected = existingFreetimes.some((freetime : any ) => freetime.days === this.selectedDay);
+          if (isDayAlreadySelected) {
+            console.log(existingFreetimes);
+            console.log(isDayAlreadySelected);
+
+            alert('Choose Another Day');
+          } else {
+            // Proceed with saving the new freetime if the day is not already selected
+            const formattedFreetime = this.combineDateAndTime(new Date(), this.selectedFreetime);
+      const formattedFreetimeto = this.combineDateAndTime(new Date(), this.selectedFreetimeto);
+            const newFreetime = {
+              doctor_id: this.doctorId,
+              doctor_freetimes: formattedFreetime,
+              doctor_freetimesto: formattedFreetimeto,
+              days: this.selectedDay
+            };
+
+            this.freetimeapi.createFreetime(newFreetime).subscribe(
+              () => {
+                console.log('New freetime saved successfully');
+                // Reset selected values
+                this.selectedFreetime = '';
+                this.selectedDay = '';
+                this.selectedFreetimeto = '';
+                this.fetchFreetimes()
+              },
+              (error) => {
+                console.error('Error saving new freetime:', error);
+              }
+            );
+          }
+        } else {
+          console.error('Existing freetimes is not an array:');
         }
-      );
+      });
+    } else {
+      console.log('Please select a day and time.');
     }
   }
+
+
+  combineDateAndTime(date: Date, time: string): string {
+    const formattedDate = date.toISOString().split('T')[0];
+    return `${formattedDate} ${time}`;
+  }
+
 
 
 

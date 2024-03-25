@@ -39,7 +39,7 @@
           @if (loginForm.get('password')?.errors && loginForm.get('password')?.touched) {
             <div id="emailHelp" class="alert alert-danger p-1 small w-50 mx-auto text-center  ">
               @if ( loginForm.get('password')?.getError("required")) {
-                <p> Gender is Requried </p>
+                <p> password is Requried </p>
               }
               @if ( loginForm.get('password')?.getError("pattern")){
                 <p> min lenth 6  </p>

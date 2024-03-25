@@ -28,7 +28,6 @@ section{
   object-fit: contain;
   height: 100%;
   max-height: 400px;
-  border-radius: 90px;
 }
 
 .homepage {
@@ -65,12 +64,7 @@ section{
   }
 }
 
-.available
-{
-  background-color: green;
-  color: white;
-  padding: 5px;
-}
+
 
 .modal-body input {
   margin: 5px;

@@ -8,7 +8,7 @@ import { ListDoctor } from '../interface/list-doctor';
 export class SearchHomePipe implements PipeTransform {
 
   transform(doctors :ListDoctor[] , term:string ): ListDoctor[] {
-    return doctors.filter((doctor) => doctor.title.toLowerCase().includes(term.toLowerCase()) );
+    return doctors.filter((doctor) => doctor.name.toLowerCase().includes(term.toLowerCase()) );
   }
 
 }

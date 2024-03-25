@@ -16,7 +16,8 @@ export class PatientProfileComponent {
   }
   ngOnInit(){
     // location.reload();
-    this.patientApi.getOnepatient(1).subscribe((data)=>{this.patient= data; console.log(this.patient);
+
+    this.patientApi.getOnepatient(2).subscribe((data)=>{this.patient= data; console.log(this.patient);
     });
   }
 }

@@ -39,11 +39,9 @@ export class ListOfDoctorsComponent {
 
   // pageChanged(event:any):void{
   //   this._doctorApi.pasination(event).subscribe({
-  //     next:(res)=>{ this.products = res;
-  //        this.doctors = this.products.data;
-  //        this.pageSize = this.products.metadata.limit;
-  //        this.curentPage =  this.products.metadata.currentPage;
-  //        this.total =  this.products.results
+  //     next:(res:any)=>{ this.products = res;
+  //       console.log(this.products);
+
   //     },
 
 
