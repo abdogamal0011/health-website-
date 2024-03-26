@@ -57,7 +57,6 @@ export class RegisterComponent {
 
 
 
-
   handleForm() {
     console.log(this.registerForm.value);
 
@@ -67,16 +66,20 @@ export class RegisterComponent {
       this.Auth.register(userData).subscribe(
         (res) => {
           this.data = res;
-          if (this.data.message === 'successfully') {
+          console.log(this.data);
+
+          if (this.data.status === true) { // Check for the status instead of message
             this.Router.navigate(['home/login']);
-            this.isLoading = false;
+          } else {
+            // Handle other cases if needed
           }
         },
         (err) => {
           this.error = err.error.message;
-          this.isLoading = false;
         }
-      );
+      ).add(() => {
+        this.isLoading = false; // Set isLoading to false regardless of success or failure
+      });
     } else {
       let errorMessage = 'Please correct the following errors: \n';
 
@@ -113,8 +116,8 @@ export class RegisterComponent {
       if (this.registerForm.get('is_admin')?.value === 'doctor') {
         errorMessage += `department required.\n`;
       }
-      // errorMessage
-      this.error=errorMessage
+      // Set the error message
+      this.error = errorMessage;
       this.isLoading = false;
     }
   }

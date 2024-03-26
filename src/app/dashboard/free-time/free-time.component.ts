@@ -4,6 +4,7 @@ import { FreetimeService } from '../../service/freetime.service';
 import { pipe } from 'rxjs';
 import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { LocalStorageService } from '../../service/local-storage.service';
 
 
 interface TimeSlot {
@@ -30,13 +31,14 @@ export class FreetimeComponent {
   selectedFreetime: string = '';
   day: string = '';
   selectedFreetimeto: string = '';
-  doctorId: number = 1;
+  doctorId: any=this.authToken.getData('user').id;
   editedFreetimeId: number | null = null;
   editedFreetime: string = '';
 
 
 
-  constructor(private freetimeapi: FreetimeService    ) {}
+  constructor(private freetimeapi: FreetimeService , private authToken:LocalStorageService    ) {
+  }
 
   ngOnInit() {
     this.fetchFreetimes();
@@ -54,16 +56,7 @@ export class FreetimeComponent {
     );
   }
 
-  // formatDateTime(dateTime: Date): string {
-  //   const year = dateTime.getFullYear();
-  //   const month = ('0' + (dateTime.getMonth() + 1)).slice(-2);
-  //   const day = ('0' + dateTime.getDate()).slice(-2);
-  //   const hours = ('0' + dateTime.getHours()).slice(-2);
-  //   const minutes = ('0' + dateTime.getMinutes()).slice(-2);
-  //   const seconds = ('0' + dateTime.getSeconds()).slice(-2);
 
-  //   return ${year}-${month}-${day} ${hours}:${minutes}:${seconds};
-  // }
 
   saveNewFreetime() {
     console.log('Selected Day:', this.selectedDay);
@@ -89,7 +82,7 @@ export class FreetimeComponent {
             const formattedFreetime = this.combineDateAndTime(new Date(), this.selectedFreetime);
       const formattedFreetimeto = this.combineDateAndTime(new Date(), this.selectedFreetimeto);
             const newFreetime = {
-              doctor_id: this.doctorId,
+              user_id: this.doctorId,
               doctor_freetimes: formattedFreetime,
               doctor_freetimesto: formattedFreetimeto,
               days: this.selectedDay

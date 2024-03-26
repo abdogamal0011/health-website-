@@ -133,19 +133,23 @@
 
                 </div>
 
-                <div class="mb-3">
+                  <div class="mb-3">
                   <label for="doctorId" class="form-label">chosse date</label>
                   <select class="form-control" id="doctorId" name="date" formControlName="date">
-                    @for (date of getUniqueDoctorFreetimes() ; track date.id) {
-                      <option name="date"  [value]="getdate(date.doctor_freetimes)">From {{ date.doctor_freetimes |date :" EEEE: h:mm a"}} To {{ date.doctor_freetimesto|date :" EEEE: h:mm a" }}</option>
+
+                    @for (date of  freetime.freetimes ; track date.id) {
+                      <option name="date"  [value]="date.id">  {{date.days}}  {{date.doctor_freetimes | date : 'h:mm a'}} : {{date.doctor_freetimesto | date : 'h:mm a'}} </option>
+
                     }
 
                   </select>
                 </div>
+
+
                 <div class="mb-3">
                   <label for="doctorId" class="form-label">Doctor ID</label>
                   <select class="form-control" id="doctorId" formControlName="doctor_id">
-                    <option [value]="doctor?.doctor.id">{{ doctor?.doctor.name }}</option>
+                    <option [value]="doctor.doctor.id">{{ doctor.doctor.name }}</option>
                   </select>
                 </div>
 

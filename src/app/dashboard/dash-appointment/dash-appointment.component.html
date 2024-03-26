@@ -51,8 +51,8 @@
                     <td class="cell">{{appointment.price}} Eg</td>
                     @if (appointment.status == 'pending') {
                       <td class="  text-light fw-bold " >
-                        <button class="btn-sm btn btn-primary mx-1" (click)="updateAppointment(appointment, 'completed')">Active</button>
-                        <button class="btn-sm btn btn-danger" (click)="updateAppointment(appointment, 'Cancelled' )">Cancelled</button>
+                        <button class="btn-sm btn btn-primary mx-1" (click)="updateAppointment(appointment, 'completed' , appointment.doctor_id)">Active</button>
+                        <button class="btn-sm btn btn-danger" (click)="updateAppointment(appointment, 'Cancelled' , appointment.doctor_id )">Cancelled</button>
                       </td>
                     }
                     <td></td>
@@ -105,8 +105,8 @@
                     <td class="cell">{{appointment.price}} Eg</td>
                     @if (appointment.status == 'pending') {
                       <td class="  text-light fw-bold " >
-                        <button class="btn-sm btn btn-primary mx-1" (click)="updateAppointment(appointment, 'completed')">Active</button>
-                        <button class="btn-sm btn btn-danger" (click)="updateAppointment(appointment, 'Cancelled' )">Cancelled</button>
+                        <button class="btn-sm btn btn-primary mx-1" (click)="updateAppointment(appointment, 'completed' , appointment.doctor_id)">Active</button>
+                        <button class="btn-sm btn btn-danger" (click)="updateAppointment(appointment, 'Cancelled' , appointment.doctor_id )">Cancelled</button>
                       </td>
                     }
                     <td></td>
@@ -149,8 +149,8 @@
                     <td class="cell">{{appointment.price}} Eg</td>
                     @if (appointment.status == 'pending') {
                       <td class="  text-light fw-bold " >
-                        <button class="btn-sm btn btn-primary mx-1" (click)="updateAppointment(appointment, 'completed')">Active</button>
-                        <button class="btn-sm btn btn-danger" (click)="updateAppointment(appointment, 'Cancelled' )">Cancelled</button>
+                        <button class="btn-sm btn btn-primary mx-1" (click)="updateAppointment(appointment, 'completed' , appointment.doctor_id)">Active</button>
+                        <button class="btn-sm btn btn-danger" (click)="updateAppointment(appointment, 'Cancelled' , appointment.doctor_id )">Cancelled</button>
                       </td>
                     }
                     <td></td>
@@ -192,8 +192,8 @@
                     <td class="cell">{{appointment.price}} Eg</td>
                     @if (appointment.status == 'pending') {
                       <td class="  text-light fw-bold " >
-                        <button class="btn-sm btn btn-primary mx-1" (click)="updateAppointment(appointment, 'completed')">Active</button>
-                        <button class="btn-sm btn btn-danger" (click)="updateAppointment(appointment, 'Cancelled' )">Cancelled</button>
+                        <button class="btn-sm btn btn-primary mx-1" (click)="updateAppointment(appointment, 'completed' , appointment.doctor_id)">Active</button>
+                        <button class="btn-sm btn btn-danger" (click)="updateAppointment(appointment, 'Cancelled' , appointment.doctor_id )">Cancelled</button>
                       </td>
                     }
                     <td></td>

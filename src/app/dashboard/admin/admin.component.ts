@@ -11,10 +11,12 @@ import { AuthService } from '../../service/auth.service';
 })
 export class AdminComponent {
   name:string ='';
+  checkUser : any ;
   constructor( private authService:AuthService , private router:Router){}
   ngOnInit(){
     const isName :any = localStorage.getItem('user')
     const user = JSON.parse(isName);
+    this.checkUser = user ;
     this.name = user.name;
   }
   logout(): void {

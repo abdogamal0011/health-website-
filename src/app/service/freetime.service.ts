@@ -10,6 +10,7 @@ import { LocalStorageService } from './local-storage.service';
 export class FreetimeService {
   private baseUrl = 'http://127.0.0.1:8000/api/freetimes';
   private freeTimeDoc = 'http://127.0.0.1:8000/api/freetimesDoc' ;
+  private freeTimeDocFront = 'http://127.0.0.1:8000/api/freetimesDocFront' ;
   private authToken :string = '';
 
   Header : any = {
@@ -29,6 +30,11 @@ export class FreetimeService {
   getAllFreetimes(doctorId: number): Observable<any[]> {
 
     return this.http.get<any[]>(`${this.freeTimeDoc}/${doctorId}`);
+
+  }
+  getAllFreetimesFront(doctorId: number): Observable<any[]> {
+
+    return this.http.get<any[]>(`${this.freeTimeDocFront}/${doctorId}`);
 
   }
 

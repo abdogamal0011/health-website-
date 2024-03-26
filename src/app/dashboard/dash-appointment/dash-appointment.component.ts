@@ -1,4 +1,5 @@
-  import { Component } from '@angular/core';
+import { LocalStorageService } from './../../service/local-storage.service';
+  import { Component, Input } from '@angular/core';
   import { AppointmentApiService } from '../../service/appointment-api.service';
   import { HttpClient } from '@angular/common/http';
   import { NgClass } from '@angular/common';
@@ -13,18 +14,25 @@
   })
   export class DashAppointmentComponent {
 
+    @Input() isAuth : boolean = false ;
 
-    doctorId : number = 1 ;
+    doctorId : any = this.LocalStorageService.getData('user').id ;
     appointments : any = {appointments:[]} ;
     data :any ;
     status: string = '';
 
     constructor(
       private appointmentApi:AppointmentApiService ,
-      private http : HttpClient
+      private http : HttpClient ,
+      private  LocalStorageService : LocalStorageService
     ){
 
+      const Auth = this.LocalStorageService.getData('user');
+      this.isAuth = !!Auth;
 
+
+        this.doctorId = Auth.id;
+        console.log(this.doctorId);
     }
 
     ngOnInit(): void {
@@ -47,14 +55,14 @@
 
     showAll(){
 
-      this.appointmentApi.getDocAppointment(this.doctorId).subscribe((data) => { this.appointments = data  ; console.log(this.appointments);
+      this.appointmentApi.getDocAppointment(this.doctorId).subscribe((data) => { this.appointments = data  ; console.log('asdsada' ,this.appointments);
       })
 
     }
 
-  updateAppointment(appointment: any, status: any): void {
+  updateAppointment(appointment: any, status: any , docId : any): void {
     const updatedData = {
-        doctor_id: this.doctorId,
+        doctor_id: docId,
         patient_id: appointment.patient.id,
         date: appointment.date,
         price: appointment.price,
@@ -72,6 +80,7 @@
               if (response.data.status == 'completed') {
 
                 this.sendEmail()
+                this.showAll()
 
               }
 
@@ -79,6 +88,7 @@
               let index = this.appointments.appointments.indexOf(object);
               this.appointments.appointments[index]=response.data;
 
+              this.showAll()
 
 
           }, error => {
@@ -94,10 +104,10 @@
           const emailParams = {
               from_name: "Doctor",
               to_name: "Ahmed",
-              from_email: "abdogamal000@gmail.com", // Replace with the doctor's email
-              to_email: "abdogamal000@gmail.com", // Use the provided patient's email address
+              from_email: "HealthCare", // Replace with the doctor's email
+              to_email: "ahmedmanaour990@gmail.com", // Use the provided patient's email address
               subject: "Appointment Confirmation",
-              message: 'http://localhost:4200/payment' // Example link
+              message: 'http://localhost:4200/payment' 
           };
 
           emailjs.send("service_3udjqfc", "template_wgilzxq", emailParams)

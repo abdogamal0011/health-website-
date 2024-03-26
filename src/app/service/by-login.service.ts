@@ -12,9 +12,10 @@ export class ByLoginService {
 
   canActivate(route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-      if (this.data.is_admin == "patient" || this.data.is_admin == "doctor" || this.data.is_admin == "admin")  {
-        this.LocalStorageService.removeData('user')
+      if (this.data.is_admin != "patient" )  {
+        
         this._router.navigate(['/home/login']);
+
         return false;
       }
       return true;

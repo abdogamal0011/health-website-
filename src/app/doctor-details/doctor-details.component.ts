@@ -1,3 +1,4 @@
+import { FreetimeService } from './../service/freetime.service';
 import { CommentsService } from './../service/comments.service';
 import { DoctorsApiService } from './../service/doctors-api.service';
 import { Component, OnInit } from '@angular/core';
@@ -46,11 +47,13 @@ export class DoctorDetailsComponent implements OnInit {
   hoveredRate: number = 0;
   comments : any[] | undefined ;
   userId :any = 1 ;
-  doctorId :any  = 1 ;
+  doctorId :number  = 1 ;
   appForm: FormGroup;
   doctors:  any = {doctors:[]};
   isAuth : boolean = false  ;
   id : number = 0;
+  freetimeId : any
+  freetime : any ;
   ;
 
   constructor(
@@ -64,6 +67,8 @@ export class DoctorDetailsComponent implements OnInit {
     private appointmentApiService: AppointmentApiService,
     private doctorApi: DoctorsApiService ,
     private LocalStorageApi : LocalStorageService ,
+    private FreetimeService : FreetimeService ,
+
 
   ) {
     this.appForm = this.fb.group({
@@ -83,7 +88,11 @@ export class DoctorDetailsComponent implements OnInit {
     });
 
 
+
+
   }
+
+
   getUniqueDoctorFreetimes() {
     const uniqueFreetimes = [];
     const seen = new Set();
@@ -100,6 +109,12 @@ export class DoctorDetailsComponent implements OnInit {
     return uniqueFreetimes;
   }
 
+
+
+
+
+
+
   appiontmentDate:any ='';
 
   ngOnInit(): void {
@@ -107,11 +122,24 @@ export class DoctorDetailsComponent implements OnInit {
     const id = this.activatedRoute.snapshot.params['id']
 
     this.doctorId = id;
+    console.log('yyyyyy' , this.id);
+
 
     this.doctorsApiService.getOneDoctors(id).subscribe((data) => {
       this.doctor = data;
       console.log("test" , this.doctor);
     });
+
+    this.FreetimeService.getAllFreetimesFront(id).subscribe((data) => {
+
+      this.freetime = data ;
+      console.log("kasgdkjsakdjhsakjdhkahsdkahkjh" ,this.freetime);
+
+
+    })
+
+
+
 
       const Auth = this.LocalStorageApi.getData('user');
 
@@ -156,6 +184,7 @@ export class DoctorDetailsComponent implements OnInit {
           console.log('Comment added successfully:', response);
           this.textComment = '';
           this.rate = 0;
+          this.getAllComments() ;
         },
         (error) => {
           console.error('Error adding comment:', error);
@@ -181,7 +210,7 @@ export class DoctorDetailsComponent implements OnInit {
         price: this.appForm.get('price')?.value,
         doctor_id:this.appForm.get('doctor_id')?.value ,
         patient_id: Api.id,
-        date: this.appForm.get('date')?.value,
+        date: formatDate(this.appForm.get('date')?.value, 'yyyy-MM-dd HH:mm:ss', 'en-US'),
         status : 'pending' ,
       };
       console.log(formData);

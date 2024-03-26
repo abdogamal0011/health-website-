@@ -38,11 +38,11 @@ export const routes: Routes = [
     component:PaymentComponent
   },
 
-  // {
-  //   path:'',
-  //   redirectTo:'home',
-  //   pathMatch:'full'
-  // },
+  {
+    path:'',
+    redirectTo:'home',
+    pathMatch:'full'
+  },
     {
       path :'home' ,
       component : LayoutComponent ,
@@ -175,6 +175,8 @@ export const routes: Routes = [
         {
 
           path:'dashadmin' ,
+          canActivate: [RouteAppLoginService  ],
+
           component : DashbordAdminComponent ,
 
         } ,
