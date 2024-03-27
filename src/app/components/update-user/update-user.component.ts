@@ -76,6 +76,7 @@ export class UpdateUserComponent  {
           this.data = res;
           if (this.data.message === 'successfully') {
             console.log("successfully updated");
+            this.router.navigate(['/admin/dashadmin']);
           }
         },
         (err) => {

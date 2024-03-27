@@ -17,6 +17,7 @@ export class RouteAppLoginService {
         this._router.navigate(['/admin']);
         return true;
       }
+
       return false;
   }
 }

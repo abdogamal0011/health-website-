@@ -29,6 +29,8 @@ import { RouteAppLoginAndRegisterService } from './service/route-app-login-and-r
 import { DepartmentComponent } from './components/department/department.component';
 import { ProtectdashboradService } from './service/protectdashborad.service';
 import { ByLoginService } from './service/by-login.service';
+import { ShowUserComponent } from './components/show-user/show-user.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
 
 
 export const routes: Routes = [
@@ -59,6 +61,7 @@ export const routes: Routes = [
       },
       {
         path:'department' ,
+        canActivate: [AuthGuardLoginService],
         component : DepartmentComponent ,
       },
 
@@ -153,6 +156,10 @@ export const routes: Routes = [
           path:'home' ,
           component : OverviewComponent ,
         },
+        {
+          path:'show/:id' ,
+          component : ShowUserComponent ,
+        },
 
         {
 
@@ -169,14 +176,13 @@ export const routes: Routes = [
         {
 
           path:'posts' ,
-          component : PostsComponent ,
+          component : AddPostComponent ,
 
         } ,
         {
 
           path:'dashadmin' ,
-          canActivate: [RouteAppLoginService  ],
-
+          // canActivate: [RouteAppLoginService  ],
           component : DashbordAdminComponent ,
 
         } ,
