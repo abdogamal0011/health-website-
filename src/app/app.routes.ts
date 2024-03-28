@@ -31,6 +31,8 @@ import { ProtectdashboradService } from './service/protectdashborad.service';
 import { ByLoginService } from './service/by-login.service';
 import { ShowUserComponent } from './components/show-user/show-user.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
+import { AddDepartmentComponent } from './add-department/add-department.component';
+import { PostsAloneComponent } from './posts-alone/posts-alone.component';
 
 
 export const routes: Routes = [
@@ -97,7 +99,7 @@ export const routes: Routes = [
           title: "doctors Page "
       } ,
       {
-          path: "pf",
+          path: "patientProfile",
           canActivate: [AuthGuardLoginService],
           component: PatientProfileComponent,
           title: "Profile "
@@ -108,6 +110,13 @@ export const routes: Routes = [
 
         component:DoctorDetailsComponent ,
         title : "details"
+      } ,
+
+      {
+        path:"postA" ,
+        canActivate: [AuthGuardLoginService],
+        component:PostsAloneComponent ,
+        title : "Posts"
       } ,
       {
         path:"profial/:id" ,
@@ -171,6 +180,12 @@ export const routes: Routes = [
 
           path:'addAppointment' ,
           component : AddAppointmentComponent ,
+
+        } ,
+        {
+
+          path:'addDepartment' ,
+          component : AddDepartmentComponent ,
 
         } ,
         {

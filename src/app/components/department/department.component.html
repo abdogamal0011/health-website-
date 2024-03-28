@@ -1,102 +1,127 @@
-<br>
-<br>
-<nav
-  id="orders-table-tab"
-  class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row py-5 mt-5 "
->
-<a
-class="flex-sm-fill text-sm-center nav-link"
-[class.active]="selectedDepartment === '' "
-(click)="getDepartments()"
->
-  All
-</a>
-  @for(department of departments ; track department.id){
-  <a
-    class="flex-sm-fill text-sm-center nav-link"
-    [class.active]="selectedDepartment === department.name"
-    (click)="showDoctorsByDepartment(department)"
-  >
-    {{ department.name }}
-  </a>
-  }
-</nav>
+<br />
+<br />
+<br />
 
-@if (selectedDepartment) {
-<div>
-  <section id="doctors" class="doctors section-bg">
-    <div class="container" data-aos="fade-up">
-      <div class="section-title">
-        <h2>Doctors</h2>
-        <p>
-          Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex
-          aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos
-          quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
-          fugiat sit in iste officiis commodi quidem hic quas.
-        </p>
-      </div>
+<div class="depart-side">
 
-      <div class="row">
-        @for(doctor of selectedDepartment.doctor ; track doctor.id ){
+  @if (selectedDepartment) {
+  <div>
+    <section id="doctors" class="doctors section-bg">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title d-flex justify-content-around">
+          <h2>Doctors</h2>
+          <div class="dropdown">
+            <button class="dropbtn">Select Department</button>
+            <div class="dropdown-content">
+              <a
+                class="flex-sm-fill text-sm-center nav-link"
+                [class.active]="selectedDepartment === ''"
+                (click)="getDepartments()"
+              >
+                All
+              </a>
+              @for(department of departments ; track department.id){
 
-        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-          <div class="member" data-aos="fade-up" data-aos-delay="200">
-            <div class="member-img">
-              <img src="http://127.0.0.1:8000/{{doctor.image}}" [routerLink]="['doctorDetails', doctor.id]"
-              class="img-fluid"alt=""/>
-            </div>
-            <div class="member-info">
-              <h4 [routerLink]="['doctorDetails', doctor.id]"
-              >{{doctor.name}}</h4>
-              <span>{{doctor.specialty}}</span>
+              <a
+                class="flex-sm-fill text-sm-center nav-link"
+                [class.active]="selectedDepartment === department.name"
+                (click)="showDoctorsByDepartment(department)"
+              >
+                {{ department.name }}
+              </a>
+              }
             </div>
           </div>
         </div>
 
-        }
-      </div>
-    </div>
-  </section>
-  <!-- End Doctors Section -->
-</div>
-}@else {
-  <div>
-    <section id="doctors" class="doctors section-bg">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2>Doctors</h2>
-          <p>
-            Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex
-            aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos
-            quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
-            fugiat sit in iste officiis commodi quidem hic quas.
-          </p>
-        </div>
-
         <div class="row">
-          @for (department of departments; track department) {
-            @for(doctor of department.doctor ; track doctor.id ){
+          @for(doctor of selectedDepartment.doctor ; track doctor.id ){
 
-              <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                <div class="member" data-aos="fade-up" data-aos-delay="200">
-                  <div class="member-img">
-                    <img src="http://127.0.0.1:8000/{{doctor.image}}" [routerLink]="['doctorDetails', doctor.id]"
-                    class="img-fluid"alt=""/>
-
-                  </div>
-                  <div class="member-info">
-                    <h4 [routerLink]="['doctorDetails', doctor.id]"
-                    >{{doctor.name}}</h4>
-                    <span>{{doctor.specialty}}</span>
-                  </div>
-                </div>
+          <div class="col-lg-3 col-md-6 ">
+            <div  data-aos="fade-up" data-aos-delay="200">
+              <div  style="height: 30vh; overflow: hidden;">
+                <img
+                  src="http://127.0.0.1:8000/{{ doctor.image }}"
+                  [routerLink]="['/home/doctorDetails', doctor.id]"
+                  class="img-fluid "
+                  alt=""
+                />
               </div>
+              <div >
+                <a [routerLink]="['/home/doctorDetails', doctor.id]">
+                  {{ doctor.name }}
+                </a>
+                <span>{{ doctor.specialty }}</span>
+              </div>
+            </div>
+          </div>
 
-              }
           }
         </div>
       </div>
     </section>
     <!-- End Doctors Section -->
   </div>
-}
+  }@else {
+  <div>
+    <section id="doctors" class="doctors section-bg">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title d-flex justify-content-around">
+          <h2>Doctors</h2>
+          <div class="dropdown">
+            <button class="dropbtn">Select Department</button>
+            <div class="dropdown-content">
+              <a
+                class="flex-sm-fill text-sm-center nav-link"
+                [class.active]="selectedDepartment === ''"
+                (click)="getDepartments()"
+              >
+                All
+              </a>
+              @for(department of departments ; track department.id){
+
+              <a
+                class="flex-sm-fill text-sm-center nav-link"
+                [class.active]="selectedDepartment === department.name"
+                (click)="showDoctorsByDepartment(department)"
+              >
+                {{ department.name }}
+              </a>
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          @for (department of departments; track department) { @for(doctor of
+          department.doctor ; track doctor.id ){
+
+          <div class="col-lg-3 col-md-6 ">
+            <div class="member" data-aos="fade-up" data-aos-delay="200">
+              <div class="member-img" style="height: 30vh; overflow: hidden;">
+                <img
+                  src="http://127.0.0.1:8000/{{ doctor.image }}"
+                  [routerLink]="['/doctorDetails', doctor.id]"
+                  class="img-fluid"
+                  height="100%"
+
+                  alt=""
+                />
+              </div>
+              <div class="member-info">
+                <a [routerLink]="['/home/doctorDetails', doctor.id]">
+                  {{ doctor.name }}
+                </a>
+                <span>{{ doctor.specialty }}</span>
+              </div>
+            </div>
+          </div>
+
+          } }
+        </div>
+      </div>
+    </section>
+    <!-- End Doctors Section -->
+  </div>
+  }
+</div>

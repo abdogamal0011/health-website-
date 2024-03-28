@@ -78,34 +78,35 @@
               <div class="row gutters-sm">
                 <div class=" " >
 
+                  @if (patient.patient.appointments && patient.patient.appointments.length > 0) {
                     <table class="table app-table-hover mb-0 text-left">
-                        <thead>
-                          <tr>
-                            <th class="cell">Appointment</th>
-                            <th class="cell">Doctor</th>
-                            <th class="cell">Fees</th>
-                            <th class="cell">Date</th>
-                            <th class="cell">Status</th>
+                      <thead>
+                        <tr>
+                          <th class="cell">Doctor</th>
+                          <th class="cell">Fees</th>
+                          <th class="cell">Date</th>
+                          <th class="cell">Status</th>
 
-                          </tr>
-                        </thead>
-                        @for(appointment of patient.patient.appointments ; track appointment.id){
-                            <tbody>
-                                <tr>
-                                    <td class="cell">{{appointment.id}}</td>
-                                    <td class="cell"><span class="truncate">{{appointment.doctor_id}}</span></td>
-                                    <td class="cell">${{appointment.price}}</td>
-                                    <td class="cell"><span class="note">{{appointment.date}}</span></td>
-                                    <td class="cell">
-                                        <span class="badge {{appointment.status === 'completed' ? 'bg-success' : 'bg-warning'}}">
-                                            {{appointment.status}}
-                                        </span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        }
+                        </tr>
+                      </thead>
+                      @for(appointment of patient.patient.appointments ; track appointment.id){
+                          <tbody>
+                              <tr>
+                                  <td class="cell"><span class="truncate">Mohamed</span></td>
+                                  <td class="cell">${{appointment.price}}</td>
+                                  <td class="cell"><span class="note">{{appointment.created_at | date : "MMM d, y"}} </span></td>
+                                  <td class="cell">
+                                      <span class="badge {{appointment.status === 'completed' ? 'bg-success' : 'bg-warning'}}">
+                                          {{appointment.status}}
+                                      </span>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      }
 
-                      </table>
+                    </table>
+                  }
+
                 </div>
               </div>
 

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DepartmentService } from '../../service/department.service';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-department',
   standalone: true,
-  imports: [RouterLink ],
+  imports: [RouterLink , MatPaginatorModule ],
   templateUrl: './department.component.html',
   styleUrl: './department.component.css'
 })
@@ -14,6 +15,8 @@ export class DepartmentComponent {
   departments : any  = [] ;
   selectedDepartment: any;
   doctors: any[] = [];
+  pageSize = 4;
+  currentPage = 1;
 
 
   constructor(private ApiS:DepartmentService){ }

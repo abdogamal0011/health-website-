@@ -24,6 +24,9 @@ export class DepartmentService {
       'Content-Type': 'application/json'
     } });
   }
+  addDepartment(data: any): Observable<any> {
+    return this.http.post<any>(this.departmentUrl, data);
+  }
 
   getDepartmentByName(name: string): Observable<any> {
     const authToken: any = localStorage.getItem('user');

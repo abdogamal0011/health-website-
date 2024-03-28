@@ -9,7 +9,7 @@ import { AuthService } from '../../service/auth.service';
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
 })
-export class AdminComponent {
+export class  AdminComponent {
   name:string ='';
   checkUser : any ;
   constructor( private authService:AuthService , private router:Router){}

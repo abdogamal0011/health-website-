@@ -8,11 +8,13 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { DoctorsApiService } from '../../service/doctors-api.service';
 import { subscribe } from 'diagnostics_channel';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 @Component({
   selector: 'app-list-of-doctors',
   standalone: true,
-  imports: [ SearchDoctorPipe , NgxPaginationModule , SearchHomePipe , FormsModule , RouterLink],
+  imports: [ SearchDoctorPipe ,MatPaginatorModule, NgxPaginationModule , SearchHomePipe , FormsModule , RouterLink],
   templateUrl: './list-of-doctors.component.html',
   styleUrl: './list-of-doctors.component.css'
 })
@@ -21,14 +23,14 @@ export class ListOfDoctorsComponent {
 
   products : []=[] ;
   doctors: any;
-  pageSize:number = 0; //limit
-  curentPage:number = 1;
+  pageSize = 4;
+  currentPage = 1;
   total :number =0
   constructor(private _doctorApi:DoctorsApiService) {  }
 
   ngOnInit():void{
 
-       this._doctorApi.getAllDoctors().subscribe(data=> {this.doctors= data
+       this._doctorApi.getAllDoctors().subscribe(data=> {this.doctors= data.doctors
         console.log(this.doctors);
        })
 
@@ -37,15 +39,16 @@ export class ListOfDoctorsComponent {
 
   }
 
-  // pageChanged(event:any):void{
-  //   this._doctorApi.pasination(event).subscribe({
-  //     next:(res:any)=>{ this.products = res;
-  //       console.log(this.products);
+  getPaginatedData(): any[] {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = Math.min(startIndex + this.pageSize, this.doctors.length);
+    return this.doctors.slice(startIndex, endIndex);
+  }
 
-  //     },
+  onPageChange(pageEvent : any): void {
+    this.currentPage = pageEvent.pageIndex + 1;
+  }
 
-
-  //  });
 
 
 
