@@ -104,8 +104,8 @@ import { LocalStorageService } from './../../service/local-storage.service';
           const emailParams = {
               from_name: "Doctor",
               to_name: "Ahmed",
-              from_email: "HealthCare", // Replace with the doctor's email
-              to_email: "abdogamal000@gmail.com", // Use the provided patient's email address
+              from_email: "HealthCare", 
+              to_email: "ahmedmanaour990@gmail.com",
               subject: "Appointment Confirmation",
               message: 'http://localhost:4200/payment'
           };
